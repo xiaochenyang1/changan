@@ -8,14 +8,7 @@
               <div class="group_36 flex-col justify-between">
                 <div class="section_5 flex-col justify-end">
                   <div class="section_21 flex-row">
-                    <div class="image-wrapper_1 flex-col">
-                      <img
-                        class="label_1"
-                        referrerpolicy="no-referrer"
-                        src="./assets/img/SketchPngc1fb10f14510fb16e5679c539655fb09e5e4382a0dee86ff5f3e11d8a8fa77ab.png"
-                      />
-                    </div>
-                    <!-- <img class="image-wrapper_1 flex-col" referrerpolicy="no-referrer" src="./assets/img/anquanshigu.png" alt=""> -->
+                    <img class="image-wrapper_1 flex-col" referrerpolicy="no-referrer" src="./assets/img/anquanshigu.png" alt="" />
                     <div class="section_22 flex-col justify-between">
                       <span class="text_1">安全事故7个0</span>
                       <div class="text-wrapper_42 flex-row justify-between">
@@ -23,13 +16,7 @@
                         <span class="text_3">起</span>
                       </div>
                     </div>
-                    <div class="image-wrapper_2 flex-col">
-                      <img
-                        class="label_2"
-                        referrerpolicy="no-referrer"
-                        src="./assets/img/SketchPng69dddd67f4fe98e95dfaf9aead330a3d12dc36492dac4fe4617ff2126eaabfa9.png"
-                      />
-                    </div>
+                    <img class="image-wrapper_2 flex-col" referrerpolicy="no-referrer" src="./assets/img/anquanhuanbaozhenggailv.png" alt="" />
                     <div class="text-wrapper_43 flex-col justify-between">
                       <span class="text_4">安全环保整改率</span>
                       <span class="text_5">96.2%</span>
@@ -40,7 +27,13 @@
                     referrerpolicy="no-referrer"
                     src="./assets/img/SketchPng75c727503552e3b6098e487849f75da58f9e85cd51f518fff7cfe09bd846bd65.png"
                   />
-                  <div class="text-wrapper_3 flex-col"><span class="text_6">安全环保&nbsp;(S/E)</span></div>
+                  <div class="text-wrapper_3 flex-col">
+                    <img
+                      class="text_6"
+                      referrerpolicy="no-referrer"
+                      src="./assets/img/anquanhuanbao.png"
+                    />
+                  </div>
                 </div>
                 <div class="section_7 flex-col justify-end">
                   <div class="section_23 flex-row">
@@ -65,13 +58,7 @@
                   </div>
                   <div class="section_24 flex-row">
                     <div class="image-text_27 flex-row justify-between">
-                      <div class="image-wrapper_3 flex-col">
-                        <img
-                          class="label_5"
-                          referrerpolicy="no-referrer"
-                          src="./assets/img/SketchPngf40b503f5be4c3a285de9350befcfde1216ef519b7de8d4f4637367d37475b6d.png"
-                        />
-                      </div>
+                      <img class="image-wrapper_3 flex-col" referrerpolicy="no-referrer" src="./assets/img/dianchiPPM.png" alt="" />
                       <div class="text-group_30 flex-col justify-between">
                         <span class="text_11">电池PPM</span>
                         <span class="text_12">1240</span>
@@ -79,13 +66,7 @@
                     </div>
                     <span class="text_13">PPM</span>
                     <div class="image-text_28 flex-row justify-between">
-                      <div class="image-wrapper_4 flex-col">
-                        <img
-                          class="label_6"
-                          referrerpolicy="no-referrer"
-                          src="./assets/img/SketchPng0f1f45f5edba15eecb582360226f0378800cb975db118066c5ec4ad611fc2f5b.png"
-                        />
-                      </div>
+                      <img class="image-wrapper_4 flex-col" referrerpolicy="no-referrer" src="./assets/img/zhizaowentiPPM.png" alt="" />
                       <div class="text-group_31 flex-col justify-between">
                         <span class="text_14">制造问题PPM&nbsp;(12MIS)</span>
                         <div class="text-wrapper_46 flex-row justify-between">
@@ -103,26 +84,14 @@
                 </div>
                 <div class="box_7 flex-col justify-end">
                   <div class="box_29 flex-row">
-                    <div class="image-wrapper_6 flex-col">
-                      <img
-                        class="label_11"
-                        referrerpolicy="no-referrer"
-                        src="./assets/img/SketchPng16bb7d14c0b814a3bb34d300f02bef6dd9de7a6fe3269db5abf142b49ed51069.png"
-                      />
-                    </div>
+                    <img class="image-wrapper_6 flex-col" referrerpolicy="no-referrer" src="./assets/img/chanliang.png" alt="" />
                     <div class="text-group_32 flex-col justify-between">
                       <span class="text_33">产量</span>
                       <span class="text_34">158</span>
                     </div>
                     <span class="text_35">台</span>
                     <div class="image-text_29 flex-row justify-between">
-                      <div class="image-wrapper_7 flex-col">
-                        <img
-                          class="label_12"
-                          referrerpolicy="no-referrer"
-                          src="./assets/img/SketchPng969667e7d3d054c0538b81d1646d46ab2ae220c50975e143c6a104219bcbf070.png"
-                        />
-                      </div>
+                      <img class="image-wrapper_7 flex-col" referrerpolicy="no-referrer" src="./assets/img/tingxianshichangcion.png" alt="" />
                       <div class="text-group_33 flex-col justify-between">
                         <span class="text_36">停线时长（min）</span>
                         <span class="text_37">1000</span>
@@ -130,26 +99,14 @@
                     </div>
                   </div>
                   <div class="box_30 flex-row">
-                    <div class="image-wrapper_12 flex-col">
-                      <img
-                        class="label_13"
-                        referrerpolicy="no-referrer"
-                        src="./assets/img/SketchPng8e662113ac63fdba357771cf6d6fa1a1e0975835c0289459add86d98db26c805.png"
-                      />
-                    </div>
+                    <img class="image-wrapper_12 flex-col" referrerpolicy="no-referrer" src="./assets/img/jph.png" alt="" />
                     <div class="text-group_34 flex-col justify-between">
                       <span class="text_120">JPH</span>
                       <span class="text_121">58</span>
                     </div>
                     <span class="text_122">台/小时</span>
                     <div class="image-text_30 flex-row justify-between">
-                      <div class="image-wrapper_13 flex-col">
-                        <img
-                          class="label_14"
-                          referrerpolicy="no-referrer"
-                          src="./assets/img/SketchPng8ad64d16e959e3e0face5e7d5c6f1c488e846cd87d9ec15c2f6da5e4f171ea34.png"
-                        />
-                      </div>
+                      <img class="image-wrapper_13 flex-col" referrerpolicy="no-referrer" src="./assets/img/jihuadachengzhunshilv.png" alt="" />
                       <div class="text-group_35 flex-col justify-between">
                         <span class="text_123">计划达成准时率</span>
                         <span class="text_124">96.2%</span>
@@ -179,7 +136,13 @@
                     referrerpolicy="no-referrer"
                     src="./assets/img/SketchPng75c727503552e3b6098e487849f75da58f9e85cd51f518fff7cfe09bd846bd65.png"
                   />
-                  <div class="text-wrapper_15 flex-col"><span class="text_61">人员&nbsp;(P)</span></div>
+                  <div class="text-wrapper_15 flex-col">
+                    <img
+                      class="text_61"
+                      referrerpolicy="no-referrer"
+                      src="./assets/img/renyuan.png"
+                    />
+                  </div>
                 </div>
                 <div class="group_14 flex-col justify-end">
                   <div class="section_25 flex-row justify-between">
@@ -384,7 +347,13 @@
                     referrerpolicy="no-referrer"
                     src="./assets/img/SketchPng75c727503552e3b6098e487849f75da58f9e85cd51f518fff7cfe09bd846bd65.png"
                   />
-                  <div class="text-wrapper_29 flex-col"><span class="text_117">停线时长</span></div>
+                  <div class="text-wrapper_29 flex-col">
+                    <img
+                      class="text_117"
+                      referrerpolicy="no-referrer"
+                      src="./assets/img/tingxianshichang.png"
+                    />
+                  </div>
                 </div>
                 <div class="block_8 flex-col justify-end">
                   <div class="text-wrapper_19 flex-row">
@@ -444,11 +413,41 @@
                 </div>
               </div>
             </div>
-            <div class="text-wrapper_9 flex-col"><span class="text_38">交付&nbsp;(D)</span></div>
-            <div class="text-wrapper_25 flex-col"><span class="text_113">设备效能&nbsp;(M)</span></div>
-            <div class="text-wrapper_26 flex-col"><span class="text_114">一级指标详情（样例）</span></div>
-            <div class="text-wrapper_27 flex-col"><span class="text_115">关键趋势</span></div>
-            <div class="text-wrapper_28 flex-col"><span class="text_116">质量&nbsp;(Q)</span></div>
+            <div class="text-wrapper_9 flex-col">
+              <img
+                class="text_38"
+                referrerpolicy="no-referrer"
+                src="./assets/img/jiaofu.png"
+              />
+            </div>
+            <div class="text-wrapper_25 flex-col">
+              <img
+                class="text_113"
+                referrerpolicy="no-referrer"
+                src="./assets/img/shebeinengxiao.png"
+              />
+            </div>
+            <div class="text-wrapper_26 flex-col">
+              <img
+                class="text_114"
+                referrerpolicy="no-referrer"
+                src="./assets/img/yijizhibiaoxiangqing.png"
+              />
+            </div>
+            <div class="text-wrapper_27 flex-col">
+              <img
+                class="text_115"
+                referrerpolicy="no-referrer"
+                src="./assets/img/guanjianqushi.png"
+              />
+            </div>
+            <div class="text-wrapper_28 flex-col">
+              <img
+                class="text_116"
+                referrerpolicy="no-referrer"
+                src="./assets/img/zhiliang.png"
+              />
+            </div>
           </div>
           <div class="section_17 flex-row">
             <img
