@@ -451,7 +451,11 @@
             <div class="text-wrapper_28 flex-col"><span class="text_116">质量&nbsp;(Q)</span></div>
           </div>
           <div class="section_17 flex-row">
-            <span class="text_118">重庆长安汽车·电池车间</span>
+            <img
+              class="text_118"
+              referrerpolicy="no-referrer"
+              src="./assets/img/dianchichejian.png"
+            />
             <div class="section_34 flex-col justify-between">
               <span class="text_119">2026-06-22&nbsp;09:20:30</span>
               <div class="image-wrapper_10 flex-col">

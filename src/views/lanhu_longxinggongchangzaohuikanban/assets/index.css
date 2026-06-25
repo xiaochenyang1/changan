@@ -54,6 +54,7 @@
     0px no-repeat;
   background-size: 11.302vw 7.315vh;
   margin-top: 0.093vh;
+  cursor: pointer;
 }
 
 .text_1 {
@@ -91,6 +92,7 @@
     0px no-repeat;
   background-size: 11.302vw 7.315vh;
   margin: 0.093vh 0 0 1.406vw;
+  cursor: pointer;
 }
 
 .text_3 {
@@ -128,6 +130,7 @@
     0px no-repeat;
   background-size: 11.302vw 7.315vh;
   margin: 0.185vh 0 0 1.719vw;
+  cursor: pointer;
 }
 
 .text_5 {
@@ -165,6 +168,7 @@
     0px no-repeat;
   background-size: 11.302vw 7.315vh;
   margin: 0.185vh 0 0 1.562vw;
+  cursor: pointer;
 }
 
 .text_7 {
@@ -202,6 +206,7 @@
     0px no-repeat;
   background-size: 11.302vw 7.315vh;
   margin-left: 1.562vw;
+  cursor: pointer;
 }
 
 .text_9 {
