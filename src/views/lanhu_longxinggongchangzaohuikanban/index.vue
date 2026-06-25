@@ -28,7 +28,13 @@
             </div>
             <div class="box_3 flex-row justify-between">
               <div class="group_2 flex-col">
-                <div class="text-wrapper_6 flex-row"><span class="text_11">白班JPH达成</span></div>
+                <div class="text-wrapper_6 flex-row">
+                  <img
+                    class="text_11"
+                    referrerpolicy="no-referrer"
+                    src="./assets/img/baibanjphdacheng.png"
+                  />
+                </div>
                 <div class="section_2 flex-row">
                   <div class="box_4 flex-col"></div>
                   <span class="text_12">昨日</span>
@@ -541,14 +547,28 @@
                 />
               </div>
             </div>
-            <div class="text-wrapper_20 flex-col"><span class="text_95">冲压车间白班SPH达成情况</span></div>
-            <div class="text-wrapper_21 flex-col"><span class="text_96">4小时入库情况</span></div>
-            <div class="text-wrapper_22 flex-col"><span class="text_97">结存车</span></div>
-            <div class="text-wrapper_23 flex-col"><span class="text_98">昨日停线TOP5问题（5分钟以上）</span></div>
-            <div class="text-wrapper_24 flex-col"><span class="text_99">各车间顺序化率</span></div>
+            <div class="text-wrapper_20 section-title flex-col">
+              <img class="section-title-img" referrerpolicy="no-referrer" src="./assets/img/chongyachejianbaiban.png" />
+            </div>
+            <div class="text-wrapper_21 section-title flex-col">
+              <img class="section-title-img" referrerpolicy="no-referrer" src="./assets/img/rukuqingkuang.png" />
+            </div>
+            <div class="text-wrapper_22 section-title flex-col">
+              <img class="section-title-img" referrerpolicy="no-referrer" src="./assets/img/jiecunche.png" />
+            </div>
+            <div class="text-wrapper_23 section-title flex-col">
+              <img class="section-title-img" referrerpolicy="no-referrer" src="./assets/img/zuoritingxianwenti.png" />
+            </div>
+            <div class="text-wrapper_24 section-title flex-col">
+              <img class="section-title-img" referrerpolicy="no-referrer" src="./assets/img/gechejianshunxuhualv.png" />
+            </div>
           </div>
           <div class="group_27 flex-row">
-            <span class="text_100">龙兴工厂早会看板</span>
+            <img
+              class="text_100"
+              referrerpolicy="no-referrer"
+              src="./assets/img/zaohuikanbanwenzi.png"
+            />
             <div class="section_12 flex-col justify-between">
               <span class="text_101">2026-06-12&nbsp;09:20:30</span>
               <div class="image-wrapper_17 flex-col">
