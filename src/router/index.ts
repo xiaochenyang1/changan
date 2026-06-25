@@ -12,7 +12,8 @@ const LanhuLongxinggongchangzaohuikanban = () => import('@/views/lanhu_longxingg
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/lanhu_longxinggongchangzaohuikanban',
+    // 临时调试：默认展示电池车间页面，调试完请改回 /lanhu_longxinggongchangzaohuikanban
+    redirect: '/lanhu_changandianchichejian',
   },
   {
     path: '/lanhu_qiantingshuju',

@@ -9,6 +9,8 @@ export default defineConfig(({ mode }) => {
   const env = getEnv(mode)
 
   return {
+    // 部署在 nginx 的 /dt-ui 子路径下，生产构建需带上该前缀；本地开发仍用根路径
+    base: mode === 'production' ? '/dt-ui/' : '/',
     plugins: plugins(),
     resolve: {
       alias: {
