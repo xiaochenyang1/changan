@@ -47,11 +47,7 @@
                 </div>
                 <div class="section_7 flex-col justify-end">
                   <div class="section_23 flex-row">
-                    <img
-                      class="label_3"
-                      referrerpolicy="no-referrer"
-                      src="./assets/img/SketchPng45c624f7a1bde855713cf1052cf2d27b9a10b12b3317a02ab831aa72c941a1de.png"
-                    />
+                    <div ref="ftrRingRef" class="ftr-ring"></div>
                     <div class="text-wrapper_44 flex-col justify-between">
                       <span class="text_7">FTR</span>
                       <span class="text_8">{{ ftrText }}</span>
@@ -468,6 +464,55 @@ let outputTrendChart: ReturnType<typeof echarts.init> | null = null
 const ftrTrendRef = ref<HTMLElement | null>(null)
 let ftrTrendChart: ReturnType<typeof echarts.init> | null = null
 
+// FTR 环形进度图（替换原 label_3 静态切图，进度 = FTR%，环内不显示数字）
+const ftrRingRef = ref<HTMLElement | null>(null)
+let ftrRingChart: ReturnType<typeof echarts.init> | null = null
+
+function renderFtrRing(percent: number) {
+  if (!ftrRingRef.value) return
+  ftrRingChart = echarts.init(ftrRingRef.value)
+  ftrRingChart.setOption({
+    // 鼠标浮到环上展示数值（默认样式 + marker 小圆点，与下方折线图一致）
+    tooltip: {
+      show: true,
+      trigger: 'item',
+      confine: false,
+      // 固定弹在光标右侧：环贴着屏幕左边缘，默认往左弹会出界
+      position: (pos: number[], _p: any, _dom: any, _rect: any, size: any) => {
+        return [pos[0] + 14, pos[1] - size.contentSize[1] / 2]
+      },
+      formatter: (p: any) => `${p.marker}FTR&nbsp;&nbsp;${ftrText.value}`,
+    },
+    series: [
+      {
+        type: 'pie',
+        radius: ['68%', '92%'], // 圆环（百分比厚度，随容器缩放）
+        center: ['50%', '50%'],
+        startAngle: 90, // 从正上方开始
+        clockwise: true, // 顺时针填充
+        label: { show: false }, // 环内不显示数字
+        labelLine: { show: false },
+        emphasis: { scale: false }, // hover 时环不放大，保持稳定
+        silent: false,
+        data: [
+          {
+            value: percent, // 进度 = FTR%
+            name: 'FTR',
+            itemStyle: { color: '#05ffc9', borderRadius: 4 }, // 与右侧数值同色，端部圆角
+          },
+          {
+            value: 100 - percent, // 剩余轨道
+            name: '',
+            itemStyle: { color: 'rgba(120,200,255,0.18)' },
+            tooltip: { show: false }, // 轨道不弹 tooltip
+            emphasis: { disabled: true },
+          },
+        ],
+      },
+    ],
+  })
+}
+
 function renderOutputTrend(data: OutputTrendItem[]) {
   if (!outputTrendRef.value) return
   outputTrendChart = echarts.init(outputTrendRef.value)
@@ -564,6 +609,7 @@ function renderFtrTrend(data: FtrTrendItem[]) {
 function handleResize() {
   outputTrendChart?.resize()
   ftrTrendChart?.resize()
+  ftrRingChart?.resize()
 }
 
 onMounted(async () => {
@@ -571,7 +617,10 @@ onMounted(async () => {
   try {
     const res = await getFtr()
     const ftt = res[0]?.ftt
-    if (ftt != null) ftrText.value = (ftt * 100).toFixed(2) + '%'
+    if (ftt != null) {
+      ftrText.value = (ftt * 100).toFixed(2) + '%'
+      renderFtrRing(ftt * 100) // 环形进度与右侧数值保持一致
+    }
   } catch (e) {
     console.error('FTR 加载失败', e)
   }
@@ -620,6 +669,7 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', handleResize)
   outputTrendChart?.dispose()
   ftrTrendChart?.dispose()
+  ftrRingChart?.dispose()
 })
 
 // 一级指标详情表格数据
