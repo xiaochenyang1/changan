@@ -7,7 +7,6 @@
 - Vue 3
 - TypeScript
 - Vite
-- Vant
 - Element Plus
 - Vue Router
 - Axios

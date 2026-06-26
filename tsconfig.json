@@ -19,7 +19,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["vite/client", "element-plus/global", "vant"]
+    "types": ["vite/client", "element-plus/global"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]

@@ -30,7 +30,6 @@ export default defineConfig(({ mode }) => {
         output: {
           manualChunks: {
             'element-plus': ['element-plus'],
-            'vant': ['vant'],
           },
         },
       },
