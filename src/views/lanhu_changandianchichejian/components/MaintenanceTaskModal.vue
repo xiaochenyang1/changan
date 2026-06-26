@@ -1,6 +1,7 @@
 <template>
   <Teleport to="body">
-    <div v-if="visible" class="mt-mask" @click.self="close">
+    <el-config-provider :locale="zhCn">
+      <div v-if="visible" class="mt-mask" @click.self="close">
       <div class="mt-panel flex-col">
         <!-- 头部 -->
         <div class="mt-header flex-row">
@@ -78,12 +79,14 @@
           <div class="mt-footnote">ⓘ 任务将自动分配给相应部门并跟踪处理进度</div>
         </div>
       </div>
-    </div>
+      </div>
+    </el-config-provider>
   </Teleport>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
 // 对外仅暴露 v-model:visible（开/关）
 defineProps<{ visible: boolean }>()

@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
-import { ElMessage } from 'element-plus'
+import { ElMessage } from 'element-plus/es/components/message'
+import 'element-plus/es/components/message/style/css'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 

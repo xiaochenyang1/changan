@@ -437,17 +437,20 @@
       </div>
     </div>
     <!-- 创建维修任务弹框 -->
-    <MaintenanceTaskModal v-model:visible="modalVisible" />
+    <MaintenanceTaskModal v-if="modalVisible" v-model:visible="modalVisible" />
   </div>
 </template>
 
 <script setup lang="ts">
 // 电池车间大屏页面
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { defineAsyncComponent, ref, onMounted, onBeforeUnmount } from 'vue'
 import * as echarts from 'echarts'
-import MaintenanceTaskModal from './components/MaintenanceTaskModal.vue'
 import { getFtr, getOutput, getC1000, getOutputTrend, getDowntime, getFtrTrend } from '@/api/modules/changan'
 import type { OutputTrendItem, FtrTrendItem } from '@/api/modules/changan'
+
+const MaintenanceTaskModal = defineAsyncComponent(
+  () => import('./components/MaintenanceTaskModal.vue')
+)
 
 // 创建维修任务弹框开关
 const modalVisible = ref(false)

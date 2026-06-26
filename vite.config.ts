@@ -26,13 +26,6 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: 'dist',
       sourcemap: mode !== 'production',
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'element-plus': ['element-plus'],
-          },
-        },
-      },
     },
     css: {
       preprocessorOptions: {
