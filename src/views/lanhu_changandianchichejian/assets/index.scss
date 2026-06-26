@@ -1,5 +1,5 @@
 .page {
-  background-color: rgba(46, 61, 97, 1);
+  background-color: transparent;
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -14,8 +14,9 @@
     .section_2 {
       height: 100vh;
       background-color: transparent;
-      background: url(./img/quantubeijing.png) 100% no-repeat;
-      background-size: 100% 100%;
+      // 暂时注释掉中间的整页背景图
+      // background: url(./img/quantubeijing.png) 100% no-repeat;
+      // background-size: 100% 100%;
       margin-left: 0.052vw;
       width: 99.948vw;
       .block_1 {
@@ -1639,551 +1640,81 @@
                   100% no-repeat;
                 background-size: 100% 100%;
                 margin-top: 4.63vh;
-                .text-wrapper_19 {
+                // ===== 一级指标详情表格（复用版：表头 + v-for 行） =====
+                // 5 列等宽网格，单元格内文字水平+垂直居中
+                %metric-grid {
+                  display: grid;
+                  grid-template-columns: repeat(5, 1fr);
+                  align-items: center;
                   width: 23.073vw;
+                  margin-left: 0.938vw;
+                }
+                .metric-thead {
+                  @extend %metric-grid;
                   height: 4.815vh;
                   background: url(./img/SketchPng582a63527bf62cad3975d9ade524deb7f628b642f67d88ca02488421453b30bf.png)
                     100% no-repeat;
                   background-size: 100% 100%;
-                  margin: 2.407vh 0 0 0.938vw;
-                  .text_83 {
-                    width: 2.917vw;
-                    height: 1.296vh;
-                    overflow-wrap: break-word;
+                  margin-top: 2.407vh;
+                  span {
                     color: rgba(38, 238, 255, 1);
                     font-size: 0.729vw;
                     font-family: SourceHanSansSC-Medium;
                     font-weight: 500;
+                    line-height: 1.944vh;
                     text-align: center;
                     white-space: nowrap;
-                    line-height: 1.944vh;
-                    margin: 1.759vh 0 0 1.042vw;
-                  }
-                  .text_84 {
-                    width: 1.458vw;
-                    height: 1.296vh;
-                    overflow-wrap: break-word;
-                    color: rgba(38, 238, 255, 1);
-                    font-size: 0.729vw;
-                    font-family: SourceHanSansSC-Medium;
-                    font-weight: 500;
-                    text-align: center;
-                    white-space: nowrap;
-                    line-height: 1.944vh;
-                    margin: 1.759vh 0 0 1.771vw;
-                  }
-                  .text_85 {
-                    width: 2.917vw;
-                    height: 1.296vh;
-                    overflow-wrap: break-word;
-                    color: rgba(38, 238, 255, 1);
-                    font-size: 0.729vw;
-                    font-family: SourceHanSansSC-Medium;
-                    font-weight: 500;
-                    text-align: center;
-                    white-space: nowrap;
-                    line-height: 1.944vh;
-                    margin: 1.759vh 0 0 1.771vw;
-                  }
-                  .text_86 {
-                    width: 2.917vw;
-                    height: 1.296vh;
-                    overflow-wrap: break-word;
-                    color: rgba(38, 238, 255, 1);
-                    font-size: 0.729vw;
-                    font-family: SourceHanSansSC-Medium;
-                    font-weight: 500;
-                    text-align: center;
-                    white-space: nowrap;
-                    line-height: 1.944vh;
-                    margin: 1.759vh 0 0 2.031vw;
-                  }
-                  .text_87 {
-                    width: 2.917vw;
-                    height: 1.296vh;
-                    overflow-wrap: break-word;
-                    color: rgba(38, 238, 255, 1);
-                    font-size: 0.729vw;
-                    font-family: SourceHanSansSC-Medium;
-                    font-weight: 500;
-                    text-align: center;
-                    white-space: nowrap;
-                    line-height: 1.944vh;
-                    margin: 1.759vh 1.094vw 0 2.24vw;
                   }
                 }
-                .block_9 {
-                  background-color: rgba(57, 106, 255, 0.09);
-                  width: 23.073vw;
+                .metric-row {
+                  @extend %metric-grid;
                   height: 4.074vh;
-                  margin: 0.741vh 0 0 0.938vw;
-                  .text_88 {
-                    width: 2.5vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
+                  margin-top: 0.37vh;
+                  background-color: rgba(57, 106, 255, 0.09); // 浅色行
+                  &--dark {
+                    background-color: rgba(57, 106, 255, 0.26); // 深色行（斑马纹）
+                  }
+                  &--first {
+                    margin-top: 0.741vh;
+                  }
+                  .metric-cell {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     color: rgba(255, 255, 255, 1);
                     font-size: 0.625vw;
                     font-family: SourceHanSansCN-Medium;
                     font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
                     line-height: 1.667vh;
-                    margin: 1.574vh 0 0 0.938vw;
-                  }
-                  .text_89 {
-                    width: 1.406vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
                     white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 2.292vw;
                   }
-                  .text-wrapper_20 {
-                    background-color: rgba(213, 52, 44, 1);
-                    border-radius: 0.469vw;
-                    height: 2.037vh;
-                    border: 0.104vw solid rgba(228, 64, 56, 0.4);
+                  .status-badge {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     width: 2.292vw;
-                    margin: 1.019vh 0 0 1.927vw;
-                    .text_90 {
-                      width: 1.25vw;
-                      height: 1.111vh;
-                      overflow-wrap: break-word;
-                      color: rgba(255, 255, 255, 1);
-                      font-size: 0.625vw;
-                      font-family: SourceHanSansSC-Regular;
-                      font-weight: NaN;
-                      text-align: left;
-                      white-space: nowrap;
-                      line-height: 1.667vh;
-                      margin: 0.463vh 0 0 0.521vw;
-                    }
-                  }
-                  .text_91 {
-                    width: 1.771vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 2.604vw;
-                  }
-                  .text_92 {
-                    width: 0.521vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 3.333vw 0 3.49vw;
-                  }
-                }
-                .block_10 {
-                  background-color: rgba(57, 106, 255, 0.26);
-                  width: 23.073vw;
-                  height: 4.074vh;
-                  margin: 0.37vh 0 0 0.938vw;
-                  .text_93 {
-                    width: 2.5vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 0.938vw;
-                  }
-                  .text_94 {
-                    width: 0.625vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 2.292vw;
-                  }
-                  .text-wrapper_21 {
-                    background-color: rgba(12, 163, 86, 1);
-                    border-radius: 0.469vw;
                     height: 2.037vh;
-                    border: 0.104vw solid rgba(26, 148, 86, 0.43);
-                    width: 2.292vw;
-                    margin: 1.111vh 0 0 2.708vw;
-                    .text_95 {
-                      width: 1.25vw;
-                      height: 1.111vh;
-                      overflow-wrap: break-word;
-                      color: rgba(255, 255, 255, 1);
-                      font-size: 0.625vw;
-                      font-family: SourceHanSansSC-Regular;
-                      font-weight: NaN;
-                      text-align: left;
-                      white-space: nowrap;
-                      line-height: 1.667vh;
-                      margin: 0.463vh 0 0 0.521vw;
-                    }
-                  }
-                  .text_96 {
-                    width: 2.917vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 2.604vw;
-                  }
-                  .text_97 {
-                    width: 0.781vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 3.073vw 0 2.344vw;
-                  }
-                }
-                .block_11 {
-                  background-color: rgba(57, 106, 255, 0.09);
-                  width: 23.073vw;
-                  height: 4.074vh;
-                  margin: 0.37vh 0 0 0.938vw;
-                  .text_98 {
-                    width: 2.5vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 0.938vw;
-                  }
-                  .text_99 {
-                    width: 0.625vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 2.292vw;
-                  }
-                  .text-wrapper_22 {
-                    background-color: rgba(217, 113, 29, 1);
                     border-radius: 0.469vw;
-                    height: 2.037vh;
-                    border: 0.104vw solid rgba(228, 133, 56, 0.4);
-                    width: 2.292vw;
-                    margin: 1.111vh 0 0 2.76vw;
-                    .text_100 {
-                      width: 1.25vw;
-                      height: 1.111vh;
-                      overflow-wrap: break-word;
-                      color: rgba(255, 255, 255, 1);
-                      font-size: 0.625vw;
-                      font-family: SourceHanSansSC-Regular;
-                      font-weight: NaN;
-                      text-align: left;
-                      white-space: nowrap;
-                      line-height: 1.667vh;
-                      margin: 0.463vh 0 0 0.521vw;
+                    font-size: 0.625vw;
+                    font-family: SourceHanSansSC-Regular;
+                    color: rgba(255, 255, 255, 1);
+                    white-space: nowrap;
+                    &--over {
+                      background-color: rgba(213, 52, 44, 1); // 超标 红
+                      border: 0.104vw solid rgba(228, 64, 56, 0.4);
                     }
-                  }
-                  .text_101 {
-                    width: 2.917vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 2.552vw;
-                  }
-                  .text_102 {
-                    width: 0.781vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 3.073vw 0 2.344vw;
-                  }
-                }
-                .block_12 {
-                  background-color: rgba(57, 106, 255, 0.26);
-                  width: 23.073vw;
-                  height: 4.074vh;
-                  margin: 0.37vh 0 0 0.938vw;
-                  .text_103 {
-                    width: 2.5vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 0.938vw;
-                  }
-                  .text_104 {
-                    width: 0.625vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 2.292vw;
-                  }
-                  .text-wrapper_23 {
-                    background-color: rgba(31, 141, 202, 1);
-                    border-radius: 0.469vw;
-                    height: 2.037vh;
-                    border: 0.104vw solid rgba(31, 141, 202, 0.42);
-                    width: 2.292vw;
-                    margin: 1.111vh 0 0 2.708vw;
-                    .text_105 {
-                      width: 1.25vw;
-                      height: 1.111vh;
-                      overflow-wrap: break-word;
-                      color: rgba(255, 255, 255, 1);
-                      font-size: 0.625vw;
-                      font-family: SourceHanSansSC-Regular;
-                      font-weight: NaN;
-                      text-align: left;
-                      white-space: nowrap;
-                      line-height: 1.667vh;
-                      margin: 0.463vh 0 0 0.521vw;
+                    &--pass {
+                      background-color: rgba(12, 163, 86, 1); // 达标 绿
+                      border: 0.104vw solid rgba(26, 148, 86, 0.43);
                     }
-                  }
-                  .text_106 {
-                    width: 1.771vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 2.604vw;
-                  }
-                  .text_107 {
-                    width: 0.521vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 3.333vw 0 3.49vw;
-                  }
-                }
-                .block_13 {
-                  background-color: rgba(57, 106, 255, 0.09);
-                  width: 23.073vw;
-                  height: 4.074vh;
-                  margin: 0.37vh 0 0 0.938vw;
-                  .text_108 {
-                    width: 1.146vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 0.938vw;
-                  }
-                  .text_109 {
-                    width: 0.625vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 3.646vw;
-                  }
-                  .text-wrapper_24 {
-                    background-color: rgba(31, 141, 202, 1);
-                    border-radius: 0.469vw;
-                    height: 2.037vh;
-                    border: 0.104vw solid rgba(31, 141, 202, 0.42);
-                    width: 2.292vw;
-                    margin: 1.019vh 0 0 2.708vw;
-                    .text_110 {
-                      width: 1.25vw;
-                      height: 1.111vh;
-                      overflow-wrap: break-word;
-                      color: rgba(255, 255, 255, 1);
-                      font-size: 0.625vw;
-                      font-family: SourceHanSansSC-Regular;
-                      font-weight: NaN;
-                      text-align: left;
-                      white-space: nowrap;
-                      line-height: 1.667vh;
-                      margin: 0.463vh 0 0 0.521vw;
+                    &--fault {
+                      background-color: rgba(217, 113, 29, 1); // 故障 橙
+                      border: 0.104vw solid rgba(228, 133, 56, 0.4);
                     }
-                  }
-                  .text_111 {
-                    width: 1.667vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 2.604vw;
-                  }
-                  .text_112 {
-                    width: 0.521vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 3.333vw 0 3.594vw;
-                  }
-                }
-                .group_43 {
-                  background-color: rgba(57, 106, 255, 0.26);
-                  width: 23.073vw;
-                  height: 4.074vh;
-                  margin: 0.37vh 0 0 0.938vw;
-                  .text_163 {
-                    width: 2.5vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 0.938vw;
-                  }
-                  .text_164 {
-                    width: 0.625vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 2.292vw;
-                  }
-                  .text-wrapper_55 {
-                    background-color: rgba(31, 141, 202, 1);
-                    border-radius: 0.469vw;
-                    height: 2.037vh;
-                    border: 0.104vw solid rgba(31, 141, 202, 0.42);
-                    width: 2.292vw;
-                    margin: 1.111vh 0 0 2.708vw;
-                    .text_165 {
-                      width: 1.25vw;
-                      height: 1.111vh;
-                      overflow-wrap: break-word;
-                      color: rgba(255, 255, 255, 1);
-                      font-size: 0.625vw;
-                      font-family: SourceHanSansSC-Regular;
-                      font-weight: NaN;
-                      text-align: left;
-                      white-space: nowrap;
-                      line-height: 1.667vh;
-                      margin: 0.463vh 0 0 0.521vw;
+                    &--normal {
+                      background-color: rgba(31, 141, 202, 1); // 正常 蓝
+                      border: 0.104vw solid rgba(31, 141, 202, 0.42);
                     }
-                  }
-                  .text_166 {
-                    width: 1.771vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 0 0 2.604vw;
-                  }
-                  .text_167 {
-                    width: 0.521vw;
-                    height: 1.111vh;
-                    overflow-wrap: break-word;
-                    color: rgba(255, 255, 255, 1);
-                    font-size: 0.625vw;
-                    font-family: SourceHanSansCN-Medium;
-                    font-weight: 500;
-                    text-align: left;
-                    white-space: nowrap;
-                    line-height: 1.667vh;
-                    margin: 1.574vh 3.333vw 0 3.49vw;
                   }
                 }
                 .image_18 {
@@ -2233,6 +1764,28 @@
             position: absolute;
             left: 73.958vw;
             top: 2.037vh;
+            // 维修任务入口按钮（标题栏本身已是 absolute，作为定位上下文）
+            .mt-entry-btn {
+              position: absolute;
+              right: 1.25vw;
+              top: 38%;
+              transform: translateY(-50%);
+              height: 2.685vh;
+              padding: 0 0.833vw;
+              color: rgba(150, 230, 255, 1);
+              font-size: 0.729vw;
+              white-space: nowrap;
+              background-color: rgba(20, 60, 100, 0.45);
+              border: 0.052vw solid rgba(64, 200, 255, 0.7);
+              border-radius: 0.26vw;
+              cursor: pointer;
+              transition: all 0.2s;
+              &:hover {
+                color: #fff;
+                border-color: rgba(120, 230, 255, 1);
+                box-shadow: 0 0 0.6vw rgba(64, 200, 255, 0.7);
+              }
+            }
             .text_113 {
               background-image: linear-gradient(
                 180deg,

@@ -23,7 +23,7 @@ html, body, #app {
 .app-container {
   width: 100vw;
   height: 100vh;
-  background-color: #0a0e27;
+  background-color: transparent;
   overflow: auto;
 }
 </style>

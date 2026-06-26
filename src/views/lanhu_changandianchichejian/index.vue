@@ -8,7 +8,12 @@
               <div class="group_36 flex-col justify-between">
                 <div class="section_5 flex-col justify-end">
                   <div class="section_21 flex-row">
-                    <img class="image-wrapper_1 flex-col" referrerpolicy="no-referrer" src="./assets/img/anquanshigu.png" alt="" />
+                    <img
+                      class="image-wrapper_1 flex-col"
+                      referrerpolicy="no-referrer"
+                      src="./assets/img/anquanshigu.png"
+                      alt=""
+                    />
                     <div class="section_22 flex-col justify-between">
                       <span class="text_1">安全事故7个0</span>
                       <div class="text-wrapper_42 flex-row justify-between">
@@ -16,7 +21,12 @@
                         <span class="text_3">起</span>
                       </div>
                     </div>
-                    <img class="image-wrapper_2 flex-col" referrerpolicy="no-referrer" src="./assets/img/anquanhuanbaozhenggailv.png" alt="" />
+                    <img
+                      class="image-wrapper_2 flex-col"
+                      referrerpolicy="no-referrer"
+                      src="./assets/img/anquanhuanbaozhenggailv.png"
+                      alt=""
+                    />
                     <div class="text-wrapper_43 flex-col justify-between">
                       <span class="text_4">安全环保整改率</span>
                       <span class="text_5">96.2%</span>
@@ -58,7 +68,12 @@
                   </div>
                   <div class="section_24 flex-row">
                     <div class="image-text_27 flex-row justify-between">
-                      <img class="image-wrapper_3 flex-col" referrerpolicy="no-referrer" src="./assets/img/dianchiPPM.png" alt="" />
+                      <img
+                        class="image-wrapper_3 flex-col"
+                        referrerpolicy="no-referrer"
+                        src="./assets/img/dianchiPPM.png"
+                        alt=""
+                      />
                       <div class="text-group_30 flex-col justify-between">
                         <span class="text_11">电池PPM</span>
                         <span class="text_12">1240</span>
@@ -66,7 +81,12 @@
                     </div>
                     <span class="text_13">PPM</span>
                     <div class="image-text_28 flex-row justify-between">
-                      <img class="image-wrapper_4 flex-col" referrerpolicy="no-referrer" src="./assets/img/zhizaowentiPPM.png" alt="" />
+                      <img
+                        class="image-wrapper_4 flex-col"
+                        referrerpolicy="no-referrer"
+                        src="./assets/img/zhizaowentiPPM.png"
+                        alt=""
+                      />
                       <div class="text-group_31 flex-col justify-between">
                         <span class="text_14">制造问题PPM&nbsp;(12MIS)</span>
                         <div class="text-wrapper_46 flex-row justify-between">
@@ -84,14 +104,24 @@
                 </div>
                 <div class="box_7 flex-col justify-end">
                   <div class="box_29 flex-row">
-                    <img class="image-wrapper_6 flex-col" referrerpolicy="no-referrer" src="./assets/img/chanliang.png" alt="" />
+                    <img
+                      class="image-wrapper_6 flex-col"
+                      referrerpolicy="no-referrer"
+                      src="./assets/img/chanliang.png"
+                      alt=""
+                    />
                     <div class="text-group_32 flex-col justify-between">
                       <span class="text_33">产量</span>
                       <span class="text_34">158</span>
                     </div>
                     <span class="text_35">台</span>
                     <div class="image-text_29 flex-row justify-between">
-                      <img class="image-wrapper_7 flex-col" referrerpolicy="no-referrer" src="./assets/img/tingxianshichangcion.png" alt="" />
+                      <img
+                        class="image-wrapper_7 flex-col"
+                        referrerpolicy="no-referrer"
+                        src="./assets/img/tingxianshichangcion.png"
+                        alt=""
+                      />
                       <div class="text-group_33 flex-col justify-between">
                         <span class="text_36">停线时长（min）</span>
                         <span class="text_37">1000</span>
@@ -99,14 +129,24 @@
                     </div>
                   </div>
                   <div class="box_30 flex-row">
-                    <img class="image-wrapper_12 flex-col" referrerpolicy="no-referrer" src="./assets/img/jph.png" alt="" />
+                    <img
+                      class="image-wrapper_12 flex-col"
+                      referrerpolicy="no-referrer"
+                      src="./assets/img/jph.png"
+                      alt=""
+                    />
                     <div class="text-group_34 flex-col justify-between">
                       <span class="text_120">JPH</span>
                       <span class="text_121">58</span>
                     </div>
                     <span class="text_122">台/小时</span>
                     <div class="image-text_30 flex-row justify-between">
-                      <img class="image-wrapper_13 flex-col" referrerpolicy="no-referrer" src="./assets/img/jihuadachengzhunshilv.png" alt="" />
+                      <img
+                        class="image-wrapper_13 flex-col"
+                        referrerpolicy="no-referrer"
+                        src="./assets/img/jihuadachengzhunshilv.png"
+                        alt=""
+                      />
                       <div class="text-group_35 flex-col justify-between">
                         <span class="text_123">计划达成准时率</span>
                         <span class="text_124">96.2%</span>
@@ -146,7 +186,9 @@
                 </div>
                 <div class="group_14 flex-col justify-end">
                   <div class="section_25 flex-row justify-between">
-                    <div class="text-wrapper_47 flex-col"><span class="text_125">车间产量趋势图</span></div>
+                    <div class="text-wrapper_47 flex-col">
+                      <span class="text_125">车间产量趋势图</span>
+                    </div>
                     <div class="group_37 flex-row">
                       <img
                         class="thumbnail_11"
@@ -356,54 +398,28 @@
                   </div>
                 </div>
                 <div class="block_8 flex-col justify-end">
-                  <div class="text-wrapper_19 flex-row">
-                    <span class="text_83">指标名称</span>
-                    <span class="text_84">单位</span>
-                    <span class="text_85">达成状态</span>
-                    <span class="text_86">所属板块</span>
-                    <span class="text_87">模版简写</span>
+                  <div class="metric-thead">
+                    <span>指标名称</span>
+                    <span>单位</span>
+                    <span>达成状态</span>
+                    <span>所属板块</span>
+                    <span>模版简写</span>
                   </div>
-                  <div class="block_9 flex-row">
-                    <span class="text_88">制造问题</span>
-                    <span class="text_89">ppm</span>
-                    <div class="text-wrapper_20 flex-col"><span class="text_90">超标</span></div>
-                    <span class="text_91">Q质量</span>
-                    <span class="text_92">Q</span>
-                  </div>
-                  <div class="block_10 flex-row">
-                    <span class="text_93">安全事故</span>
-                    <span class="text_94">起</span>
-                    <div class="text-wrapper_21 flex-col"><span class="text_95">达标</span></div>
-                    <span class="text_96">S安全环保</span>
-                    <span class="text_97">SE</span>
-                  </div>
-                  <div class="block_11 flex-row">
-                    <span class="text_98">安全环保</span>
-                    <span class="text_99">%</span>
-                    <div class="text-wrapper_22 flex-col"><span class="text_100">故障</span></div>
-                    <span class="text_101">E安全环保</span>
-                    <span class="text_102">SE</span>
-                  </div>
-                  <div class="block_12 flex-row">
-                    <span class="text_103">电池下线</span>
-                    <span class="text_104">%</span>
-                    <div class="text-wrapper_23 flex-col"><span class="text_105">正常</span></div>
-                    <span class="text_106">Q质量</span>
-                    <span class="text_107">Q</span>
-                  </div>
-                  <div class="block_13 flex-row">
-                    <span class="text_108">FTT</span>
-                    <span class="text_109">元</span>
-                    <div class="text-wrapper_24 flex-col"><span class="text_110">正常</span></div>
-                    <span class="text_111">C成本</span>
-                    <span class="text_112">Q</span>
-                  </div>
-                  <div class="group_43 flex-row">
-                    <span class="text_163">单车制造</span>
-                    <span class="text_164">%</span>
-                    <div class="text-wrapper_55 flex-col"><span class="text_165">正常</span></div>
-                    <span class="text_166">Q质量</span>
-                    <span class="text_167">Q</span>
+                  <div
+                    v-for="(row, i) in indicators"
+                    :key="row.name"
+                    class="metric-row"
+                    :class="{ 'metric-row--dark': i % 2 === 1, 'metric-row--first': i === 0 }"
+                  >
+                    <span class="metric-cell">{{ row.name }}</span>
+                    <span class="metric-cell">{{ row.unit }}</span>
+                    <span class="metric-cell">
+                      <span class="status-badge" :class="'status-badge--' + row.status">{{
+                        row.statusText
+                      }}</span>
+                    </span>
+                    <span class="metric-cell">{{ row.plate }}</span>
+                    <span class="metric-cell">{{ row.abbr }}</span>
                   </div>
                   <img
                     class="image_18"
@@ -414,11 +430,7 @@
               </div>
             </div>
             <div class="text-wrapper_9 flex-col">
-              <img
-                class="text_38"
-                referrerpolicy="no-referrer"
-                src="./assets/img/jiaofu.png"
-              />
+              <img class="text_38" referrerpolicy="no-referrer" src="./assets/img/jiaofu.png" />
             </div>
             <div class="text-wrapper_25 flex-col">
               <img
@@ -426,6 +438,8 @@
                 referrerpolicy="no-referrer"
                 src="./assets/img/shebeinengxiao.png"
               />
+              <!-- 创建维修任务入口按钮 -->
+              <button class="mt-entry-btn" @click="modalVisible = true">+ 任务下发</button>
             </div>
             <div class="text-wrapper_26 flex-col">
               <img
@@ -442,11 +456,7 @@
               />
             </div>
             <div class="text-wrapper_28 flex-col">
-              <img
-                class="text_116"
-                referrerpolicy="no-referrer"
-                src="./assets/img/zhiliang.png"
-              />
+              <img class="text_116" referrerpolicy="no-referrer" src="./assets/img/zhiliang.png" />
             </div>
           </div>
           <div class="section_17 flex-row">
@@ -476,11 +486,43 @@
         </div>
       </div>
     </div>
+    <!-- 创建维修任务弹框 -->
+    <MaintenanceTaskModal v-model:visible="modalVisible" />
   </div>
 </template>
 
 <script setup lang="ts">
 // 电池车间大屏页面
+import { ref } from 'vue'
+import MaintenanceTaskModal from './components/MaintenanceTaskModal.vue'
+
+// 创建维修任务弹框开关
+const modalVisible = ref(false)
+
+// 一级指标详情表格数据
+// status 决定徽章颜色：over=超标(红) pass=达标(绿) fault=故障(橙) normal=正常(蓝)
+const indicators = [
+  { name: '制造问题', unit: 'ppm', status: 'over', statusText: '超标', plate: 'Q质量', abbr: 'Q' },
+  {
+    name: '安全事故',
+    unit: '起',
+    status: 'pass',
+    statusText: '达标',
+    plate: 'S安全环保',
+    abbr: 'SE',
+  },
+  {
+    name: '安全环保',
+    unit: '%',
+    status: 'fault',
+    statusText: '故障',
+    plate: 'E安全环保',
+    abbr: 'SE',
+  },
+  { name: '电池下线', unit: '%', status: 'normal', statusText: '正常', plate: 'Q质量', abbr: 'Q' },
+  { name: 'FTT', unit: '元', status: 'normal', statusText: '正常', plate: 'C成本', abbr: 'Q' },
+  { name: '单车制造', unit: '%', status: 'normal', statusText: '正常', plate: 'Q质量', abbr: 'Q' },
+]
 </script>
 
 <style scoped lang="scss" src="./assets/index.scss"></style>
