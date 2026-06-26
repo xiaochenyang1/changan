@@ -54,7 +54,7 @@
                     />
                     <div class="text-wrapper_44 flex-col justify-between">
                       <span class="text_7">FTR</span>
-                      <span class="text_8">63.33%</span>
+                      <span class="text_8">{{ ftrText }}</span>
                     </div>
                     <img
                       class="label_4"
@@ -63,7 +63,7 @@
                     />
                     <div class="text-wrapper_45 flex-col justify-between">
                       <span class="text_9">C/1000</span>
-                      <span class="text_10">10%</span>
+                      <span class="text_10">{{ c1000Text }}</span>
                     </div>
                   </div>
                   <div class="section_24 flex-row">
@@ -112,7 +112,7 @@
                     />
                     <div class="text-group_32 flex-col justify-between">
                       <span class="text_33">产量</span>
-                      <span class="text_34">158</span>
+                      <span class="text_34">{{ outputText }}</span>
                     </div>
                     <span class="text_35">台</span>
                     <div class="image-text_29 flex-row justify-between">
@@ -493,11 +493,44 @@
 
 <script setup lang="ts">
 // 电池车间大屏页面
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import MaintenanceTaskModal from './components/MaintenanceTaskModal.vue'
+import { getFtr, getOutput, getC1000 } from '@/api/modules/changan'
 
 // 创建维修任务弹框开关
 const modalVisible = ref(false)
+
+// 长安指标数据
+const ftrText = ref('--') // FTR 一次性通过率（changan_ftr，ftt×100%）
+const outputText = ref('--') // 产量汇总（changan_output，total_output）
+const c1000Text = ref('--') // C1000 缺陷率（changan_c1000，每千台缺陷数，非百分比）
+
+onMounted(async () => {
+  // FTR 一次性通过率
+  try {
+    const res = await getFtr()
+    const ftt = res[0]?.ftt
+    if (ftt != null) ftrText.value = (ftt * 100).toFixed(2) + '%'
+  } catch (e) {
+    console.error('FTR 加载失败', e)
+  }
+  // 产量汇总
+  try {
+    const res = await getOutput()
+    const out = res[0]?.total_output
+    if (out != null) outputText.value = String(out)
+  } catch (e) {
+    console.error('产量加载失败', e)
+  }
+  // C1000 缺陷率
+  try {
+    const res = await getC1000()
+    const v = res[0]?.c1000
+    if (v != null) c1000Text.value = v.toFixed(2)
+  } catch (e) {
+    console.error('C1000 加载失败', e)
+  }
+})
 
 // 一级指标详情表格数据
 // status 决定徽章颜色：over=超标(红) pass=达标(绿) fault=故障(橙) normal=正常(蓝)
