@@ -1963,3 +1963,10 @@
     }
   }
 }
+
+// 车间产量趋势图 ECharts 容器（替换原静态占位图区域，尺寸沿用 text-wrapper_48 + block_20）
+.output-trend-chart {
+  width: 11.667vw;
+  height: 8.981vh;
+  margin: 0.463vh 0 0 0;
+}

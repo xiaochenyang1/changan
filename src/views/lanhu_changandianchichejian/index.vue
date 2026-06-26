@@ -124,7 +124,7 @@
                       />
                       <div class="text-group_33 flex-col justify-between">
                         <span class="text_36">停线时长（min）</span>
-                        <span class="text_37">1000</span>
+                        <span class="text_37">{{ downtimeText }}</span>
                       </div>
                     </div>
                   </div>
@@ -204,30 +204,7 @@
                     </div>
                   </div>
                   <div class="section_26 flex-row">
-                    <div class="text-wrapper_48 flex-col">
-                      <span class="text_127">100%</span>
-                      <span class="text_128">50%</span>
-                      <span class="text_129">0%</span>
-                    </div>
-                    <div class="block_20 flex-col justify-between">
-                      <div class="group_38 flex-col">
-                        <div class="image-wrapper_14 flex-col">
-                          <img
-                            class="image_21"
-                            referrerpolicy="no-referrer"
-                            src="./assets/img/SketchPng4253c9d44126002b6d16730c57c21e34fa2dedfc0aa080198dbf6e05a9456e93.png"
-                          />
-                        </div>
-                      </div>
-                      <div class="text-wrapper_49 flex-row">
-                        <span class="text_130">4/1</span>
-                        <span class="text_131">4/2</span>
-                        <span class="text_132">4/3</span>
-                        <span class="text_133">4/4</span>
-                        <span class="text_134">4/5</span>
-                        <span class="text_135">4/6</span>
-                      </div>
-                    </div>
+                    <div ref="outputTrendRef" class="output-trend-chart"></div>
                     <div class="text-wrapper_50 flex-col">
                       <span class="text_136">100%</span>
                       <span class="text_137">50%</span>
@@ -493,9 +470,11 @@
 
 <script setup lang="ts">
 // 电池车间大屏页面
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import * as echarts from 'echarts'
 import MaintenanceTaskModal from './components/MaintenanceTaskModal.vue'
-import { getFtr, getOutput, getC1000 } from '@/api/modules/changan'
+import { getFtr, getOutput, getC1000, getOutputTrend, getDowntime } from '@/api/modules/changan'
+import type { OutputTrendItem } from '@/api/modules/changan'
 
 // 创建维修任务弹框开关
 const modalVisible = ref(false)
@@ -504,6 +483,60 @@ const modalVisible = ref(false)
 const ftrText = ref('--') // FTR 一次性通过率（changan_ftr，ftt×100%）
 const outputText = ref('--') // 产量汇总（changan_output，total_output）
 const c1000Text = ref('--') // C1000 缺陷率（changan_c1000，每千台缺陷数，非百分比）
+const downtimeText = ref('--') // 停线时长合计（changan_downtime，各天 total_duration 求和，单位 min）
+
+// 产量趋势图（changan_output_trend）
+const outputTrendRef = ref<HTMLElement | null>(null)
+let outputTrendChart: ReturnType<typeof echarts.init> | null = null
+
+function renderOutputTrend(data: OutputTrendItem[]) {
+  if (!outputTrendRef.value) return
+  outputTrendChart = echarts.init(outputTrendRef.value)
+  const dates = data.map((d) => {
+    const p = d.OPERATION_DT.split('-')
+    return `${Number(p[1])}/${Number(p[2])}`
+  })
+  const values = data.map((d) => d.total_output)
+  outputTrendChart.setOption({
+    grid: { left: 42, right: 28, top: 16, bottom: 22 },
+    tooltip: { trigger: 'axis' },
+    xAxis: {
+      type: 'category',
+      data: dates,
+      boundaryGap: false,
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: 'rgba(120,200,255,0.4)' } },
+      axisLabel: { color: '#9fd8ff', fontSize: 9 },
+    },
+    yAxis: {
+      type: 'value',
+      splitNumber: 3,
+      axisLabel: { color: '#9fd8ff', fontSize: 9, margin: 6 },
+      splitLine: { lineStyle: { color: 'rgba(120,200,255,0.12)' } },
+    },
+    series: [
+      {
+        type: 'line',
+        smooth: true,
+        data: values,
+        symbol: 'circle',
+        symbolSize: 4,
+        lineStyle: { color: '#05efff', width: 2 },
+        itemStyle: { color: '#05efff' },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: 'rgba(5,239,255,0.35)' },
+            { offset: 1, color: 'rgba(5,239,255,0.02)' },
+          ]),
+        },
+      },
+    ],
+  })
+}
+
+function handleResize() {
+  outputTrendChart?.resize()
+}
 
 onMounted(async () => {
   // FTR 一次性通过率
@@ -530,6 +563,27 @@ onMounted(async () => {
   } catch (e) {
     console.error('C1000 加载失败', e)
   }
+  // 停线时长（各天 total_duration 求和）
+  try {
+    const res = await getDowntime()
+    const sum = res.reduce((acc, d) => acc + (d.total_duration ?? 0), 0)
+    downtimeText.value = String(Math.round(sum))
+  } catch (e) {
+    console.error('停机统计加载失败', e)
+  }
+  // 产量趋势图
+  try {
+    const trend = await getOutputTrend()
+    renderOutputTrend(trend)
+  } catch (e) {
+    console.error('产量趋势加载失败', e)
+  }
+  window.addEventListener('resize', handleResize)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', handleResize)
+  outputTrendChart?.dispose()
 })
 
 // 一级指标详情表格数据
