@@ -44,7 +44,7 @@ export interface OutputItem { total_output: number }
 export interface FtrItem { ftt: number }
 export interface DowntimeItem { belong_date: string; total_duration?: number }
 export interface OutputTrendItem { OPERATION_DT: string; total_output: number }
-export interface FtrTrendItem { OPERATION_DT: string; ftt: number }
+export interface FtrTrendItem { OPERATION_DT: string; ftt?: number }
 
 // 默认查询区间（按需在调用处覆盖）
 const defaultRange: DateRange = { stat_date: '2026-01-01', end_date: '2026-06-30' }

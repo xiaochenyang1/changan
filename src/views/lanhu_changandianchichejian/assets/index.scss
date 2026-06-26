@@ -1970,3 +1970,10 @@
   height: 8.981vh;
   margin: 0.463vh 0 0 0;
 }
+
+// FTR 趋势图 ECharts 容器（替换原 text-wrapper_50 + block_21，与左图等宽对称）
+.ftr-trend-chart {
+  width: 11.667vw;
+  height: 8.981vh;
+  margin: 0.463vh 0 0 0.312vw;
+}

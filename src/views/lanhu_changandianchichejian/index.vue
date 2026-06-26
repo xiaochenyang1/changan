@@ -205,30 +205,7 @@
                   </div>
                   <div class="section_26 flex-row">
                     <div ref="outputTrendRef" class="output-trend-chart"></div>
-                    <div class="text-wrapper_50 flex-col">
-                      <span class="text_136">100%</span>
-                      <span class="text_137">50%</span>
-                      <span class="text_138">0%</span>
-                    </div>
-                    <div class="block_21 flex-col justify-between">
-                      <div class="section_27 flex-col">
-                        <div class="image-wrapper_15 flex-col">
-                          <img
-                            class="image_22"
-                            referrerpolicy="no-referrer"
-                            src="./assets/img/SketchPng8bca9da9e112422c5bd86e4cb1ac921bbfe3543e5b13bbc3807b2eba7be87758.png"
-                          />
-                        </div>
-                      </div>
-                      <div class="text-wrapper_51 flex-row">
-                        <span class="text_139">4/1</span>
-                        <span class="text_140">4/2</span>
-                        <span class="text_141">4/3</span>
-                        <span class="text_142">4/4</span>
-                        <span class="text_143">4/5</span>
-                        <span class="text_144">4/6</span>
-                      </div>
-                    </div>
+                    <div ref="ftrTrendRef" class="ftr-trend-chart"></div>
                   </div>
                   <img
                     class="image_13"
@@ -473,8 +450,8 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import * as echarts from 'echarts'
 import MaintenanceTaskModal from './components/MaintenanceTaskModal.vue'
-import { getFtr, getOutput, getC1000, getOutputTrend, getDowntime } from '@/api/modules/changan'
-import type { OutputTrendItem } from '@/api/modules/changan'
+import { getFtr, getOutput, getC1000, getOutputTrend, getDowntime, getFtrTrend } from '@/api/modules/changan'
+import type { OutputTrendItem, FtrTrendItem } from '@/api/modules/changan'
 
 // 创建维修任务弹框开关
 const modalVisible = ref(false)
@@ -488,6 +465,8 @@ const downtimeText = ref('--') // 停线时长合计（changan_downtime，各天
 // 产量趋势图（changan_output_trend）
 const outputTrendRef = ref<HTMLElement | null>(null)
 let outputTrendChart: ReturnType<typeof echarts.init> | null = null
+const ftrTrendRef = ref<HTMLElement | null>(null)
+let ftrTrendChart: ReturnType<typeof echarts.init> | null = null
 
 function renderOutputTrend(data: OutputTrendItem[]) {
   if (!outputTrendRef.value) return
@@ -534,8 +513,57 @@ function renderOutputTrend(data: OutputTrendItem[]) {
   })
 }
 
+function renderFtrTrend(data: FtrTrendItem[]) {
+  if (!ftrTrendRef.value) return
+  const valid = data.filter((d): d is { OPERATION_DT: string; ftt: number } => d.ftt != null)
+  ftrTrendChart = echarts.init(ftrTrendRef.value)
+  const dates = valid.map((d) => {
+    const p = d.OPERATION_DT.split('-')
+    return `${Number(p[1])}/${Number(p[2])}`
+  })
+  const values = valid.map((d) => +(d.ftt * 100).toFixed(2))
+  ftrTrendChart.setOption({
+    grid: { left: 42, right: 28, top: 16, bottom: 22 },
+    tooltip: { trigger: 'axis', valueFormatter: (v: number) => `${v}%` },
+    xAxis: {
+      type: 'category',
+      data: dates,
+      boundaryGap: false,
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: 'rgba(120,200,255,0.4)' } },
+      axisLabel: { color: '#9fd8ff', fontSize: 9 },
+    },
+    yAxis: {
+      type: 'value',
+      min: 0,
+      max: 100,
+      splitNumber: 2,
+      axisLabel: { color: '#9fd8ff', fontSize: 9, margin: 6, formatter: '{value}%' },
+      splitLine: { lineStyle: { color: 'rgba(120,200,255,0.12)' } },
+    },
+    series: [
+      {
+        type: 'line',
+        smooth: true,
+        data: values,
+        symbol: 'circle',
+        symbolSize: 4,
+        lineStyle: { color: '#37e0a0', width: 2 },
+        itemStyle: { color: '#37e0a0' },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: 'rgba(55,224,160,0.35)' },
+            { offset: 1, color: 'rgba(55,224,160,0.02)' },
+          ]),
+        },
+      },
+    ],
+  })
+}
+
 function handleResize() {
   outputTrendChart?.resize()
+  ftrTrendChart?.resize()
 }
 
 onMounted(async () => {
@@ -578,12 +606,20 @@ onMounted(async () => {
   } catch (e) {
     console.error('产量趋势加载失败', e)
   }
+  // FTR 趋势图
+  try {
+    const trend = await getFtrTrend()
+    renderFtrTrend(trend)
+  } catch (e) {
+    console.error('FTR趋势加载失败', e)
+  }
   window.addEventListener('resize', handleResize)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', handleResize)
   outputTrendChart?.dispose()
+  ftrTrendChart?.dispose()
 })
 
 // 一级指标详情表格数据
