@@ -532,7 +532,7 @@
                     }
                   }
                   .text-group_34 {
-                    width: 1.823vw;
+                    width: auto;
                     height: 4.537vh;
                     margin-left: 0.469vw;
                     .text_120 {
@@ -548,7 +548,7 @@
                       line-height: 1.944vh;
                     }
                     .text_121 {
-                      width: 1.823vw;
+                      width: auto;
                       height: 2.778vh;
                       overflow-wrap: break-word;
                       color: rgba(5, 239, 255, 1);
@@ -571,7 +571,7 @@
                     text-align: left;
                     white-space: nowrap;
                     line-height: 1.944vh;
-                    margin: 2.685vh 0 0 0.365vw;
+                    margin: 2.685vh 0 0 0.1vw;
                   }
                   .image-text_30 {
                     width: 8.229vw;
@@ -638,9 +638,10 @@
                   width: 6.042vw;
                   height: 4.537vh;
                   margin: 2.037vh 0 0 2.083vw;
-                  .label_10 {
+                  .attendance-ring {
                     width: 2.396vw;
                     height: 4.259vh;
+                    flex-shrink: 0;
                   }
                   .text-group_36 {
                     width: 3.021vw;
@@ -1983,5 +1984,12 @@
   width: 2.396vw;
   height: 4.259vh;
   margin-top: 0.278vh;
+  flex-shrink: 0;
+}
+
+.c1000-ring {
+  width: 2.396vw;
+  height: 4.259vh;
+  margin: 0.278vh 0 0 3.229vw; // 沿用原 label_4 的定位间距
   flex-shrink: 0;
 }
