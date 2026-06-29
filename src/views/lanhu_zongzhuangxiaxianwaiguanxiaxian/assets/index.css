@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 .zongzhuang-mask {
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -32,7 +22,7 @@
 }
 
 .group_3 {
-  width: 56.510vw;
+  width: 56.51vw;
   height: 3.704vh;
   background: url(./img/SketchPng5d10f52238fafd6b3fd2749211b3f21bac2bc3b76519b6853717c2217abeca10.png)
     100% no-repeat;
@@ -41,13 +31,9 @@
 }
 
 .text_3 {
-  background-image: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 1) 0,
-    rgba(137, 241, 255, 1) 100%
-  );
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 1) 0, rgba(137, 241, 255, 1) 100%);
   width: 9.792vw;
-  height: 2.870vh;
+  height: 2.87vh;
   overflow-wrap: break-word;
   color: rgba(255, 255, 255, 1);
   font-size: 1.042vw;
@@ -55,7 +41,7 @@
   font-weight: NaN;
   text-align: left;
   white-space: nowrap;
-  line-height: 2.870vh;
+  line-height: 2.87vh;
   margin-left: 2.344vw;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -64,13 +50,13 @@
 .thumbnail_1 {
   width: 0.781vw;
   height: 1.389vh;
-  margin: 0.648vh 1.510vw 0 42.083vw;
+  margin: 0.648vh 1.51vw 0 42.083vw;
 }
 
 .group_4 {
   width: 53.646vw;
   height: 32.778vh;
-  margin: 2.130vh 0 2.870vh 1.458vw;
+  margin: 2.13vh 0 2.87vh 1.458vw;
 }
 
 .group_5 {
@@ -99,7 +85,7 @@
 }
 
 .text_4 {
-  width: 3.490vw;
+  width: 3.49vw;
   height: 1.481vh;
   overflow-wrap: break-word;
   color: rgba(252, 252, 252, 1);
@@ -109,7 +95,7 @@
   font-weight: 500;
   text-align: left;
   white-space: nowrap;
-  line-height: 2.222vh;
+  line-height: 1.222vh;
   margin: 0.556vh 15.677vw 0 0.677vw;
 }
 
@@ -185,7 +171,7 @@
   text-align: left;
   white-space: nowrap;
   line-height: 1.944vh;
-  margin: 1.296vh 0 0 3.750vw;
+  margin: 1.296vh 0 0 3.75vw;
 }
 
 .text_8 {
@@ -199,7 +185,7 @@
   text-align: left;
   white-space: nowrap;
   line-height: 1.944vh;
-  margin: 1.296vh 1.927vw 0 3.750vw;
+  margin: 1.296vh 1.927vw 0 3.75vw;
 }
 
 .image_4 {
@@ -254,7 +240,7 @@
 }
 
 .text_10 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -268,7 +254,7 @@
 }
 
 .text_11 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -282,7 +268,7 @@
 }
 
 .text_12 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -315,7 +301,7 @@
 }
 
 .text_14 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -325,11 +311,11 @@
   text-align: center;
   white-space: nowrap;
   line-height: 1.944vh;
-  margin-left: 4.740vw;
+  margin-left: 4.74vw;
 }
 
 .text_15 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -343,7 +329,7 @@
 }
 
 .text_16 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -376,7 +362,7 @@
 }
 
 .text_18 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.204vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -390,7 +376,7 @@
 }
 
 .text_19 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.204vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -404,7 +390,7 @@
 }
 
 .text_20 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.204vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -420,7 +406,7 @@
 .text-wrapper_4 {
   width: 19.896vw;
   height: 1.389vh;
-  margin: 2.315vh 0 0 1.250vw;
+  margin: 2.315vh 0 0 1.25vw;
 }
 
 .text_21 {
@@ -559,7 +545,7 @@
 }
 
 .text_30 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -583,7 +569,7 @@
   text-align: center;
   white-space: nowrap;
   line-height: 1.944vh;
-  margin: 0.093vh 0 0 3.750vw;
+  margin: 0.093vh 0 0 3.75vw;
 }
 
 .text_32 {
@@ -643,7 +629,7 @@
 .image_13 {
   position: absolute;
   left: 1.094vw;
-  top: 22.870vh;
+  top: 22.87vh;
   width: 23.698vw;
   height: 0.278vh;
 }
@@ -707,8 +693,10 @@
   font-family: SourceHanSansCN-Medium;
   font-weight: 500;
   text-align: left;
-  line-height: 2.222vh;
-  margin: -2.130vh 0 0 1.458vw;
+  line-height: 1.222vh;
+  margin: -2.13vh 0 0 1.458vw;
+  position: relative;
+  z-index: 1;
 }
 
 .box_3 {
@@ -775,7 +763,7 @@
   text-align: left;
   white-space: nowrap;
   line-height: 1.944vh;
-  margin: 1.296vh 0 0 3.750vw;
+  margin: 1.296vh 0 0 3.75vw;
 }
 
 .text_36 {
@@ -789,7 +777,7 @@
   text-align: left;
   white-space: nowrap;
   line-height: 1.944vh;
-  margin: 1.296vh 1.927vw 0 3.750vw;
+  margin: 1.296vh 1.927vw 0 3.75vw;
 }
 
 .image_17 {
@@ -844,7 +832,7 @@
 }
 
 .text_38 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -858,7 +846,7 @@
 }
 
 .text_39 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -872,7 +860,7 @@
 }
 
 .text_40 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -905,7 +893,7 @@
 }
 
 .text_42 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -915,11 +903,11 @@
   text-align: center;
   white-space: nowrap;
   line-height: 1.944vh;
-  margin-left: 4.740vw;
+  margin-left: 4.74vw;
 }
 
 .text_43 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -933,7 +921,7 @@
 }
 
 .text_44 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -966,7 +954,7 @@
 }
 
 .text_46 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.204vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -980,7 +968,7 @@
 }
 
 .text_47 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.204vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -994,7 +982,7 @@
 }
 
 .text_48 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.204vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -1010,7 +998,7 @@
 .text-wrapper_10 {
   width: 19.896vw;
   height: 1.389vh;
-  margin: 2.315vh 0 0 1.250vw;
+  margin: 2.315vh 0 0 1.25vw;
 }
 
 .text_49 {
@@ -1149,7 +1137,7 @@
 }
 
 .text_58 {
-  width: 1.250vw;
+  width: 1.25vw;
   height: 1.296vh;
   overflow-wrap: break-word;
   color: rgba(238, 236, 236, 1);
@@ -1173,7 +1161,7 @@
   text-align: center;
   white-space: nowrap;
   line-height: 1.944vh;
-  margin: 0.093vh 0 0 3.750vw;
+  margin: 0.093vh 0 0 3.75vw;
 }
 
 .text_60 {
@@ -1233,7 +1221,7 @@
 .image_26 {
   position: absolute;
   left: 1.094vw;
-  top: 22.870vh;
+  top: 22.87vh;
   width: 23.698vw;
   height: 0.278vh;
 }
