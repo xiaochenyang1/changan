@@ -1,6 +1,6 @@
 <template>
   <div class="page flex-col">
-        <div class="box_1 flex-col">
+    <div class="box_1 flex-col">
       <div class="section_1 flex-col">
         <div class="block_1 flex-col">
           <div class="group_1 flex-col">
@@ -434,36 +434,18 @@
             </div>
             <div class="box_24 flex-row justify-between">
               <div class="group_14 flex-col">
-                <div class="box_25 flex-row">
-                  <div class="group_15 flex-col"></div>
-                  <span class="text_69">焊接车间-白班-上车体MB04车型切换时,组拼夹具…</span>
-                  <span class="text_70">12min</span>
+                <div class="downtime-list flex-col">
+                  <div v-for="(item, i) in topDowntime" :key="i" class="downtime-row flex-row">
+                    <div class="downtime-row__bar"></div>
+                    <span class="downtime-row__text" :title="item.desc">{{ item.desc }}</span>
+                    <span class="downtime-row__time">{{ item.duration }}</span>
+                  </div>
                 </div>
-                <div class="box_26 flex-row">
-                  <div class="box_27 flex-col"></div>
-                  <span class="text_71">焊接车间-白班-上车体MB04车型切换时,组拼夹具…</span>
-                  <span class="text_72">12min</span>
-                </div>
-                <span class="text_73">焊接车间-白班-上车体MB04车型切换时,组拼夹具…</span>
-                <div class="box_28 flex-row">
-                  <div class="box_29 flex-col"></div>
-                  <span class="text_74">焊接车间-白班-上车体MB04车型切换时,组拼夹具…</span>
-                  <span class="text_75">12min</span>
-                </div>
-                <span class="text_76">焊接车间-白班-上车体MB04车型切换时,组拼夹具…</span>
                 <img
                   class="image_22"
                   referrerpolicy="no-referrer"
                   src="./assets/img/SketchPng9778f92ff5597afd7fcbd2dfa89030b8d5909ae3645f8bc7b563573d94375200.png"
                 />
-                <div class="box_30 flex-row">
-                  <div class="box_31 flex-col"></div>
-                  <span class="text_77">12min</span>
-                </div>
-                <div class="box_32 flex-row">
-                  <div class="group_16 flex-col"></div>
-                  <span class="text_78">12min</span>
-                </div>
               </div>
               <div class="group_17 flex-col">
                 <div class="group_18 flex-row justify-between">
@@ -548,19 +530,39 @@
               </div>
             </div>
             <div class="text-wrapper_20 section-title flex-col">
-              <img class="section-title-img" referrerpolicy="no-referrer" src="./assets/img/chongyachejianbaiban.png" />
+              <img
+                class="section-title-img"
+                referrerpolicy="no-referrer"
+                src="./assets/img/chongyachejianbaiban.png"
+              />
             </div>
             <div class="text-wrapper_21 section-title flex-col">
-              <img class="section-title-img" referrerpolicy="no-referrer" src="./assets/img/rukuqingkuang.png" />
+              <img
+                class="section-title-img"
+                referrerpolicy="no-referrer"
+                src="./assets/img/rukuqingkuang.png"
+              />
             </div>
             <div class="text-wrapper_22 section-title flex-col">
-              <img class="section-title-img" referrerpolicy="no-referrer" src="./assets/img/jiecunche.png" />
+              <img
+                class="section-title-img"
+                referrerpolicy="no-referrer"
+                src="./assets/img/jiecunche.png"
+              />
             </div>
             <div class="text-wrapper_23 section-title flex-col">
-              <img class="section-title-img" referrerpolicy="no-referrer" src="./assets/img/zuoritingxianwenti.png" />
+              <img
+                class="section-title-img"
+                referrerpolicy="no-referrer"
+                src="./assets/img/zuoritingxianwenti.png"
+              />
             </div>
             <div class="text-wrapper_24 section-title flex-col">
-              <img class="section-title-img" referrerpolicy="no-referrer" src="./assets/img/gechejianshunxuhualv.png" />
+              <img
+                class="section-title-img"
+                referrerpolicy="no-referrer"
+                src="./assets/img/gechejianshunxuhualv.png"
+              />
             </div>
           </div>
           <div class="group_27 flex-row">
@@ -590,12 +592,20 @@
         </div>
       </div>
     </div>
-  
   </div>
 </template>
 <script setup lang="ts">
 // Page component
+
+// 昨日停线 TOP5 问题（5分钟以上）。后续接真实接口时替换为请求返回值。
+const topDowntime = [
+  { desc: '焊接车间-白班-上车体MB04车型切换时,组拼夹具…', duration: '12min' },
+  { desc: '焊接车间-白班-上车体MB04车型切换时,组拼夹具…', duration: '12min' },
+  { desc: '焊接车间-白班-上车体MB04车型切换时,组拼夹具…', duration: '12min' },
+  { desc: '焊接车间-白班-上车体MB04车型切换时,组拼夹具…', duration: '12min' },
+  { desc: '焊接车间-白班-上车体MB04车型切换时,组拼夹具…', duration: '12min' },
+]
 </script>
 
-
-<style scoped lang="css" src="./assets/index.css" />-
+<style scoped lang="css" src="./assets/index.css" />
+-
