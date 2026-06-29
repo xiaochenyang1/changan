@@ -591,20 +591,28 @@
 
     <!-- 制造周期弹框 -->
     <ZhizaozhouqiDialog :visible="showZhouqiDialog" @close="showZhouqiDialog = false" />
+
+    <!-- 千停弹框 -->
+    <QiantingDialog :visible="showQiantingDialog" @close="showQiantingDialog = false" />
   </div>
 </template>
 <script setup lang="ts">
 // Page component
 import { ref } from 'vue'
 import ZhizaozhouqiDialog from '../lanhu_zhizaozhouqi/index.vue'
+import QiantingDialog from '../lanhu_qiantingshuju/index.vue'
 
 // 制造周期弹框显示状态
 const showZhouqiDialog = ref(false)
+// 千停弹框显示状态
+const showQiantingDialog = ref(false)
 
-// 点击顶部 KPI 卡片：制造周期弹出明细弹框，其余暂不处理
+// 点击顶部 KPI 卡片：制造周期/千停弹出对应弹框
 function onKpiClick(kpi: { label: string }) {
   if (kpi.label === '制造周期') {
     showZhouqiDialog.value = true
+  } else if (kpi.label === '千停') {
+    showQiantingDialog.value = true
   }
 }
 

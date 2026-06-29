@@ -1,111 +1,34 @@
-.page {
-  /* background-color: rgba(46, 61, 97, 1); */
-   background-color: transparent;
-  position: relative;
-  width: 100.000vw;
-  height: 100.000vh;
-  overflow: hidden;
-}
 
-.block_1 {
-  height: 99.815vh;
-  /* background: url(./img/SketchPngafd4e50cf3903ab7983fbedb9154bf38175ba84265e0465fea2fee2e2014c632.png)
-    0px 0px no-repeat;
-  background-size: 100.000vw 99.907vh; */
-   background-color: transparent;
-  width: 100.000vw;
-}
 
-.group_1 {
-  position: relative;
-  width: 100.000vw;
-  height: 6.944vh;
-  background: url(./img/SketchPng990e9ec04780ab6ba27e641d571a072acacb90e67cdd767676b714ae291b56fb.png)
-    0px -1px no-repeat;
-  background-size: 100.000vw 7.130vh;
-}
 
-.text_1 {
-  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
-  background-image: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 1) 0,
-    rgba(155, 231, 255, 1) 100%
-  );
-  width: 20.312vw;
-  height: 5.093vh;
-  overflow-wrap: break-word;
-  color: rgba(255, 255, 255, 1);
-  font-size: 2.188vw;
-  letter-spacing: 0.521vw;
-  font-family: YouSheBiaoTiHei;
-  font-weight: NaN;
-  text-align: center;
-  white-space: nowrap;
-  line-height: 5.093vh;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0.833vh 0 0 40.417vw;
-}
 
-.box_1 {
-  width: 32.552vw;
-  height: 3.796vh;
-  margin: 2.593vh 2.292vw 0 4.427vw;
-}
 
-.text_2 {
-  width: 6.771vw;
-  height: 1.296vh;
-  overflow-wrap: break-word;
-  color: rgba(127, 223, 255, 1);
-  font-size: 0.729vw;
-  font-family: SourceHanSansSC-Regular;
-  font-weight: NaN;
-  text-align: left;
-  white-space: nowrap;
-  line-height: 1.944vh;
-  margin-left: 25.781vw;
-}
 
-.image_1 {
-  width: 31.354vw;
-  height: 1.667vh;
-  margin-top: 0.833vh;
-}
 
-.image-wrapper_1 {
-  height: 4.815vh;
-  background: url(./img/SketchPng23afe756a718a100a7df5994f3ff3e053d228fbc3cd08ab7c996677b6ed9954c.png)
-    100% no-repeat;
-  background-size: 100% 100%;
-  width: 24.688vw;
-  position: absolute;
-  left: 37.396vw;
-  top: 4.537vh;
-}
 
-.image_2 {
-  width: 24.688vw;
-  height: 4.815vh;
-}
 
-.block_2 {
+.qianting-mask {
   background-color: rgba(0, 0, 0, 0.5);
-  height: 100.000vh;
-  width: 100.000vw;
-  position: absolute;
-  left: 0;
-  top: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  /* 整屏遮罩，卡片水平垂直居中，随屏幕尺寸自适应 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .box_2 {
-  height: 36.111vh;
+  height: 36.296vh;
   background: url(./img/SketchPng937e5ee4cc96d1003ba7e25cf44eaf85ddf705f9715cca40e91bc07a584cb723.png) -1px -1px
     no-repeat;
   background-size: 56.875vw 36.296vh;
-  width: 56.771vw;
-  margin: 31.852vh 0 0 22.188vw;
+  width: 56.875vw;
+  margin: 0;
+}
+
+.dialog-close {
+  cursor: pointer;
 }
 
 .section_1 {
