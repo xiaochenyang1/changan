@@ -5,25 +5,19 @@
         <div class="block_1 flex-col">
           <div class="group_1 flex-col">
             <div class="box_2 flex-row">
-              <div class="text-wrapper_1 flex-col">
-                <span class="text_1">制造周期</span>
-                <span class="text_2">1,14</span>
-              </div>
-              <div class="text-wrapper_2 flex-col">
-                <span class="text_3">千停</span>
-                <span class="text_4">100</span>
-              </div>
-              <div class="text-wrapper_3 flex-col">
-                <span class="text_5">总装下线-外观下线</span>
-                <span class="text_6">92.9%</span>
-              </div>
-              <div class="text-wrapper_4 flex-col">
-                <span class="text_7">产量计划完成率-数量</span>
-                <span class="text_8">108%</span>
-              </div>
-              <div class="text-wrapper_5 flex-col">
-                <span class="text_9">产量计划完成率-时间</span>
-                <span class="text_10">90%</span>
+              <div
+                v-for="(kpi, i) in kpiList"
+                :key="i"
+                class="kpi-card flex-col"
+                :style="{
+                  backgroundImage: `url(${kpi.bg})`,
+                  marginLeft: kpi.gap ? `${kpi.gap}vw` : '',
+                }"
+              >
+                <span class="kpi-card__label">{{ kpi.label }}</span>
+                <span class="kpi-card__value" :class="{ 'kpi-card__value--warn': kpi.warn }">{{
+                  kpi.value
+                }}</span>
               </div>
             </div>
             <div class="box_3 flex-row justify-between">
@@ -596,6 +590,23 @@
 </template>
 <script setup lang="ts">
 // Page component
+
+// 顶部 KPI 条背景切图（每张卡片各一张）
+import bgZhouqi from './assets/img/zhizaozhouqi.png'
+import bgQianting from './assets/img/qianting.png'
+import bgWaiguan from './assets/img/zongzhuangxiaxian.png'
+import bgShuliang from './assets/img/chanliangjihuawanchenglv-shuliang.png'
+import bgShijian from './assets/img/chanliangjihuawanchenglv-shijian.png'
+
+// 顶部 KPI 条。gap 为与前一卡片的水平间距(vw)，首卡为 0；warn=true 用橙色高亮。
+// 后续接真实接口时只需替换 value 字段。
+const kpiList = [
+  { label: '制造周期', value: '1,14', bg: bgZhouqi, gap: 0 },
+  { label: '千停', value: '100', bg: bgQianting, gap: 1.406, warn: true },
+  { label: '总装下线-外观下线', value: '92.9%', bg: bgWaiguan, gap: 1.719 },
+  { label: '产量计划完成率-数量', value: '108%', bg: bgShuliang, gap: 1.562 },
+  { label: '产量计划完成率-时间', value: '90%', bg: bgShijian, gap: 1.562 },
+]
 
 // 昨日停线 TOP5 问题（5分钟以上）。后续接真实接口时替换为请求返回值。
 const topDowntime = [
