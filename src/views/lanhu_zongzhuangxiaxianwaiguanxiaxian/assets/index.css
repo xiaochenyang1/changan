@@ -1253,3 +1253,60 @@
   width: 23.698vw;
   height: 0.278vh;
 }
+
+/* dtd-table 表格样式 */
+.dtd-table {
+  margin: 0.833vh 1.094vw 0;
+  border: 1px solid #0ac2e6;
+  border-radius: 0.26vw;
+  overflow: hidden;
+}
+
+.dtd-table__header,
+.dtd-table__row {
+  display: flex;
+  border-bottom: 1px solid #0ac2e6;
+}
+
+.dtd-table__row:last-child {
+  border-bottom: none;
+}
+
+/* 表头背景沿用原设计切图 */
+.dtd-table__header {
+  background: url(./img/SketchPng1459672be915a08e60c07853aa6e6da27d604ddb4234c6b6bbf07e41eb4eed49.png)
+    100% no-repeat;
+  background-size: 100% 100%;
+}
+
+.dtd-table__cell {
+  flex: 1;
+  min-width: 0;
+  height: 3.519vh;
+  padding: 0 0.521vw;
+  color: rgba(238, 236, 236, 1);
+  font-size: 0.729vw;
+  font-family: SourceHanSansSC-Medium;
+  font-weight: 500;
+  line-height: 1.944vh;
+  border-right: 1px solid #0ac2e6;
+  /* flex + align-items 让文字在行内垂直居中 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dtd-table__cell:last-child {
+  border-right: none;
+}
+
+.dtd-table__cell--header {
+  color: rgba(38, 238, 255, 1);
+}
+
+/* 第一列(名称)左对齐并留出缩进，数值列居中 */
+.dtd-table__header .dtd-table__cell:first-child,
+.dtd-table__row .dtd-table__cell:first-child {
+  justify-content: flex-start;
+  padding-left: 1.042vw;
+}
