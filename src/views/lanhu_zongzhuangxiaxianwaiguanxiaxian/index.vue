@@ -1,33 +1,15 @@
 <template>
-  <div class="page flex-col">
-    <div class="block_1 flex-col">
-      <div class="group_1 flex-row">
-        <span class="text_1">龙兴工厂早会看板</span>
-        <div class="group_2 flex-col justify-between">
-          <span class="text_2">2026-03-17&nbsp;08:20:30</span>
-          <img
-            class="image_1"
-            referrerpolicy="no-referrer"
-            src="./assets/img/SketchPng25d57ec753a8bffcd1b85b54e51ddf4fa23c4cf1047441573c2ab1ce93ada3f3.png"
-          />
-        </div>
-        <div class="image-wrapper_1 flex-col align-center">
-          <img
-            class="image_2"
-            referrerpolicy="no-referrer"
-            src="./assets/img/SketchPng23afe756a718a100a7df5994f3ff3e053d228fbc3cd08ab7c996677b6ed9954c.png"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="block_2 flex-col">
-      <div class="section_1 flex-col">
-        <div class="group_3 flex-row">
+  <Teleport to="body">
+    <div v-if="visible" class="zongzhuang-mask" @click.self="emit('close')">
+      <div class="block_2 flex-col">
+        <div class="section_1 flex-col">
+          <div class="group_3 flex-row">
           <span class="text_3">总装下线-外观下线</span>
           <img
-            class="thumbnail_1"
+            class="thumbnail_1 dialog-close"
             referrerpolicy="no-referrer"
             src="./assets/img/SketchPngb96053a9b80ccb0b02b09888929a9680c971b70362f9f140710993ca1502e41b.png"
+            @click="emit('close')"
           />
         </div>
         <div class="group_4 flex-row justify-between">
@@ -287,13 +269,15 @@
             />
           </div>
         </div>
+        </div>
       </div>
     </div>
-  
-  </div>
+  </Teleport>
 </template>
 <script setup lang="ts">
-// Page component
+// 总装下线-外观下线弹框组件。由父级看板通过 visible 控制显示，关闭时 emit('close')。
+defineProps<{ visible: boolean }>()
+const emit = defineEmits<{ (e: 'close'): void }>()
 </script>
 
 

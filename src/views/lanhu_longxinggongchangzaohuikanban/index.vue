@@ -594,6 +594,15 @@
 
     <!-- 千停弹框 -->
     <QiantingDialog :visible="showQiantingDialog" @close="showQiantingDialog = false" />
+
+    <!-- 总装下线-外观下线弹框 -->
+    <ZongzhuangDialog :visible="showZongzhuangDialog" @close="showZongzhuangDialog = false" />
+
+    <!-- 产量计划完成率-数量弹框 -->
+    <ChanliangShuliangDialog :visible="showChanliangShuliangDialog" @close="showChanliangShuliangDialog = false" />
+
+    <!-- 产量计划完成率-时间弹框 -->
+    <ChanliangShijianDialog :visible="showChanliangShijianDialog" @close="showChanliangShijianDialog = false" />
   </div>
 </template>
 <script setup lang="ts">
@@ -601,18 +610,29 @@
 import { ref } from 'vue'
 import ZhizaozhouqiDialog from '../lanhu_zhizaozhouqi/index.vue'
 import QiantingDialog from '../lanhu_qiantingshuju/index.vue'
+import ZongzhuangDialog from '../lanhu_zongzhuangxiaxianwaiguanxiaxian/index.vue'
+import ChanliangShuliangDialog from '../lanhu_chanliangjihuawanchenglvshuliang/index.vue'
+import ChanliangShijianDialog from '../lanhu_chanliangjihuawanchenglvshijian/index.vue'
 
-// 制造周期弹框显示状态
+// 各弹框显示状态
 const showZhouqiDialog = ref(false)
-// 千停弹框显示状态
 const showQiantingDialog = ref(false)
+const showZongzhuangDialog = ref(false)
+const showChanliangShuliangDialog = ref(false)
+const showChanliangShijianDialog = ref(false)
 
-// 点击顶部 KPI 卡片：制造周期/千停弹出对应弹框
+// 点击顶部 KPI 卡片：根据 label 弹出对应弹框
 function onKpiClick(kpi: { label: string }) {
   if (kpi.label === '制造周期') {
     showZhouqiDialog.value = true
   } else if (kpi.label === '千停') {
     showQiantingDialog.value = true
+  } else if (kpi.label === '总装下线-外观下线') {
+    showZongzhuangDialog.value = true
+  } else if (kpi.label === '产量计划完成率-数量') {
+    showChanliangShuliangDialog.value = true
+  } else if (kpi.label === '产量计划完成率-时间') {
+    showChanliangShijianDialog.value = true
   }
 }
 
