@@ -225,7 +225,7 @@
                     </div>
                   </div>
                   <div class="group_41 flex-row justify-between">
-                    <div class="box_4 flex-col">
+                    <div class="box_4 flex-col" style="cursor: pointer" @click="handleDowntimeRateClick">
                       <span class="text_25">10</span>
                       <span class="text_26">设备千台停机率</span>
                       <img
@@ -439,10 +439,16 @@ import { defineAsyncComponent, ref, onMounted, onBeforeUnmount } from 'vue'
 import * as echarts from 'echarts'
 import { getFtr, getOutput, getC1000, getOutputTrend, getDowntime, getFtrTrend, getJph } from '@/api/modules/changan'
 import type { OutputTrendItem, FtrTrendItem } from '@/api/modules/changan'
+import { messenger } from '@/composables/messenger'
 
 const MaintenanceTaskModal = defineAsyncComponent(
   () => import('./components/MaintenanceTaskModal.vue')
 )
+
+// 点击「设备千台停机率」→ 通知 3D 场景聚焦对应设备（FOCUS_ASSET 不带 Cosmo_ 前缀，直接 publish）
+function handleDowntimeRateClick() {
+  messenger.publish('FOCUS_ASSET', '电芯拆垛上料')
+}
 
 // 创建维修任务弹框开关
 const modalVisible = ref(false)
