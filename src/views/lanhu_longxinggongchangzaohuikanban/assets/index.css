@@ -57,6 +57,10 @@
   cursor: pointer;
 }
 
+.kpi-card--clickable:hover {
+  filter: brightness(1.15);
+}
+
 .kpi-card__label {
   height: 1.204vh;
   overflow-wrap: break-word;

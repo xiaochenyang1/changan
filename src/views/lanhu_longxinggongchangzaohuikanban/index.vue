@@ -9,10 +9,12 @@
                 v-for="(kpi, i) in kpiList"
                 :key="i"
                 class="kpi-card flex-col"
+                :class="{ 'kpi-card--clickable': kpi.label === '制造周期' }"
                 :style="{
                   backgroundImage: `url(${kpi.bg})`,
                   marginLeft: kpi.gap ? `${kpi.gap}vw` : '',
                 }"
+                @click="onKpiClick(kpi)"
               >
                 <span class="kpi-card__label">{{ kpi.label }}</span>
                 <span class="kpi-card__value" :class="{ 'kpi-card__value--warn': kpi.warn }">{{
@@ -586,10 +588,25 @@
         </div>
       </div>
     </div>
+
+    <!-- 制造周期弹框 -->
+    <ZhizaozhouqiDialog :visible="showZhouqiDialog" @close="showZhouqiDialog = false" />
   </div>
 </template>
 <script setup lang="ts">
 // Page component
+import { ref } from 'vue'
+import ZhizaozhouqiDialog from '../lanhu_zhizaozhouqi/index.vue'
+
+// 制造周期弹框显示状态
+const showZhouqiDialog = ref(false)
+
+// 点击顶部 KPI 卡片：制造周期弹出明细弹框，其余暂不处理
+function onKpiClick(kpi: { label: string }) {
+  if (kpi.label === '制造周期') {
+    showZhouqiDialog.value = true
+  }
+}
 
 // 顶部 KPI 条背景切图（每张卡片各一张）
 import bgZhouqi from './assets/img/zhizaozhouqi.png'
