@@ -402,7 +402,10 @@
 <script setup lang="ts">
 // 电池车间大屏页面
 import { defineAsyncComponent, ref, onMounted, onBeforeUnmount } from 'vue'
-import * as echarts from 'echarts'
+import { init, use, graphic, type EChartsType } from 'echarts/core'
+import { LineChart, PieChart } from 'echarts/charts'
+import { GridComponent, TooltipComponent } from 'echarts/components'
+import { CanvasRenderer } from 'echarts/renderers'
 import {
   getFtr,
   getOutput,
@@ -415,7 +418,9 @@ import {
 import type { OutputTrendItem, FtrTrendItem } from '@/api/modules/changan'
 import { messenger } from '@/composables/messenger'
 
-type EChartsInstance = ReturnType<typeof echarts.init>
+use([LineChart, PieChart, GridComponent, TooltipComponent, CanvasRenderer])
+
+type EChartsInstance = EChartsType
 
 const MaintenanceTaskModal = defineAsyncComponent(
   () => import('./components/MaintenanceTaskModal.vue')
@@ -474,7 +479,7 @@ type SettledTask = {
 
 function getOrInitChart(el: HTMLElement | null, chart: EChartsInstance | null) {
   if (!el || isUnmounted) return null
-  return chart ?? echarts.init(el)
+  return chart ?? init(el)
 }
 
 function disposeChart(chart: EChartsInstance | null) {
@@ -608,7 +613,7 @@ function renderOutputTrend(data: OutputTrendItem[]) {
         lineStyle: { color: '#05efff', width: 2 },
         itemStyle: { color: '#05efff' },
         areaStyle: {
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          color: new graphic.LinearGradient(0, 0, 0, 1, [
             { offset: 0, color: 'rgba(5,239,255,0.35)' },
             { offset: 1, color: 'rgba(5,239,255,0.02)' },
           ]),
@@ -656,7 +661,7 @@ function renderFtrTrend(data: FtrTrendItem[]) {
         lineStyle: { color: '#37e0a0', width: 2 },
         itemStyle: { color: '#37e0a0' },
         areaStyle: {
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          color: new graphic.LinearGradient(0, 0, 0, 1, [
             { offset: 0, color: 'rgba(55,224,160,0.35)' },
             { offset: 1, color: 'rgba(55,224,160,0.02)' },
           ]),
