@@ -10,7 +10,6 @@
                   <div class="section_21 flex-row">
                     <img
                       class="image-wrapper_1 flex-col"
-                      referrerpolicy="no-referrer"
                       src="./assets/img/anquanshigu.png"
                       alt=""
                     />
@@ -23,7 +22,6 @@
                     </div>
                     <img
                       class="image-wrapper_2 flex-col"
-                      referrerpolicy="no-referrer"
                       src="./assets/img/anquanhuanbaozhenggailv.png"
                       alt=""
                     />
@@ -34,13 +32,11 @@
                   </div>
                   <img
                     class="image_1"
-                    referrerpolicy="no-referrer"
                     src="./assets/img/SketchPng75c727503552e3b6098e487849f75da58f9e85cd51f518fff7cfe09bd846bd65.png"
                   />
                   <div class="text-wrapper_3 flex-col">
                     <img
                       class="text_6"
-                      referrerpolicy="no-referrer"
                       src="./assets/img/anquanhuanbao.png"
                     />
                   </div>
@@ -62,7 +58,6 @@
                     <div class="image-text_27 flex-row justify-between">
                       <img
                         class="image-wrapper_3 flex-col"
-                        referrerpolicy="no-referrer"
                         src="./assets/img/dianchiPPM.png"
                         alt=""
                       />
@@ -75,7 +70,6 @@
                     <div class="image-text_28 flex-row justify-between">
                       <img
                         class="image-wrapper_4 flex-col"
-                        referrerpolicy="no-referrer"
                         src="./assets/img/zhizaowentiPPM.png"
                         alt=""
                       />
@@ -90,7 +84,6 @@
                   </div>
                   <img
                     class="image_2"
-                    referrerpolicy="no-referrer"
                     src="./assets/img/SketchPng75c727503552e3b6098e487849f75da58f9e85cd51f518fff7cfe09bd846bd65.png"
                   />
                 </div>
@@ -98,7 +91,6 @@
                   <div class="box_29 flex-row">
                     <img
                       class="image-wrapper_6 flex-col"
-                      referrerpolicy="no-referrer"
                       src="./assets/img/chanliang.png"
                       alt=""
                     />
@@ -110,7 +102,6 @@
                     <div class="image-text_29 flex-row justify-between">
                       <img
                         class="image-wrapper_7 flex-col"
-                        referrerpolicy="no-referrer"
                         src="./assets/img/tingxianshichangcion.png"
                         alt=""
                       />
@@ -123,7 +114,6 @@
                   <div class="box_30 flex-row">
                     <img
                       class="image-wrapper_12 flex-col"
-                      referrerpolicy="no-referrer"
                       src="./assets/img/jph.png"
                       alt=""
                     />
@@ -135,7 +125,6 @@
                     <div class="image-text_30 flex-row justify-between">
                       <img
                         class="image-wrapper_13 flex-col"
-                        referrerpolicy="no-referrer"
                         src="./assets/img/jihuadachengzhunshilv.png"
                         alt=""
                       />
@@ -147,7 +136,6 @@
                   </div>
                   <img
                     class="image_5"
-                    referrerpolicy="no-referrer"
                     src="./assets/img/SketchPng75c727503552e3b6098e487849f75da58f9e85cd51f518fff7cfe09bd846bd65.png"
                   />
                 </div>
@@ -161,13 +149,11 @@
                   </div>
                   <img
                     class="image_9"
-                    referrerpolicy="no-referrer"
                     src="./assets/img/SketchPng75c727503552e3b6098e487849f75da58f9e85cd51f518fff7cfe09bd846bd65.png"
                   />
                   <div class="text-wrapper_15 flex-col">
                     <img
                       class="text_61"
-                      referrerpolicy="no-referrer"
                       src="./assets/img/renyuan.png"
                     />
                   </div>
@@ -180,13 +166,11 @@
                     <div class="group_37 flex-row">
                       <img
                         class="thumbnail_11"
-                        referrerpolicy="no-referrer"
                         src="./assets/img/SketchPngd1ec49f1f01e7c4c427be1cf161d5cc1b1cc4d7d5b36bb1bc0399272e5b06ce6.png"
                       />
                       <span class="text_126">FTR趋势图</span>
                       <img
                         class="thumbnail_12"
-                        referrerpolicy="no-referrer"
                         src="./assets/img/SketchPng8fc60584944abddb2055cfc737393b63209feba3abb8eeb086c255938d455cc8.png"
                       />
                     </div>
@@ -197,7 +181,6 @@
                   </div>
                   <img
                     class="image_13"
-                    referrerpolicy="no-referrer"
                     src="./assets/img/SketchPng75c727503552e3b6098e487849f75da58f9e85cd51f518fff7cfe09bd846bd65.png"
                   />
                 </div>
@@ -210,7 +193,6 @@
                       <span class="text_18">综合效率（&nbsp;OEE）</span>
                       <img
                         class="thumbnail_1"
-                        referrerpolicy="no-referrer"
                         src="./assets/img/SketchPng60f8b964a14c74767f59003c35dde1c72ef34d45bc8cb961397ee4d56ed480ed.png"
                       />
                     </div>
@@ -219,7 +201,6 @@
                       <span class="text_20">设备开动率</span>
                       <img
                         class="thumbnail_2"
-                        referrerpolicy="no-referrer"
                         src="./assets/img/SketchPng60f8b964a14c74767f59003c35dde1c72ef34d45bc8cb961397ee4d56ed480ed.png"
                       />
                     </div>
@@ -234,7 +215,6 @@
                       <span class="text_26">设备千台停机率</span>
                       <img
                         class="thumbnail_5"
-                        referrerpolicy="no-referrer"
                         src="./assets/img/SketchPng60f8b964a14c74767f59003c35dde1c72ef34d45bc8cb961397ee4d56ed480ed.png"
                       />
                     </div>
@@ -243,14 +223,12 @@
                       <span class="text_24">设备千台停线率</span>
                       <img
                         class="thumbnail_4"
-                        referrerpolicy="no-referrer"
                         src="./assets/img/SketchPng60f8b964a14c74767f59003c35dde1c72ef34d45bc8cb961397ee4d56ed480ed.png"
                       />
                     </div>
                   </div>
                   <img
                     class="image_3"
-                    referrerpolicy="no-referrer"
                     src="./assets/img/SketchPng75c727503552e3b6098e487849f75da58f9e85cd51f518fff7cfe09bd846bd65.png"
                   />
                 </div>
@@ -272,20 +250,17 @@
                           <span class="text_151">5,000</span>
                           <img
                             class="image_23"
-                            referrerpolicy="no-referrer"
                             src="./assets/img/SketchPng87f2d7a4f2ac144e07a68aa6c96441ce715aebc1fe96679ca40a4eee780a1395.png"
                           />
                         </div>
                         <img
                           class="image_24"
-                          referrerpolicy="no-referrer"
                           src="./assets/img/SketchPnga9a5afd4fe33823dc548ccc9df82589d8624da732aa8c860d35a5d9c099de033.png"
                         />
                         <div class="section_30 flex-col justify-between">
                           <span class="text_152">5,000</span>
                           <img
                             class="image_25"
-                            referrerpolicy="no-referrer"
                             src="./assets/img/SketchPng87f2d7a4f2ac144e07a68aa6c96441ce715aebc1fe96679ca40a4eee780a1395.png"
                           />
                         </div>
@@ -293,20 +268,17 @@
                           <span class="text_153">6,100</span>
                           <img
                             class="image_26"
-                            referrerpolicy="no-referrer"
                             src="./assets/img/SketchPng540ed9c11b49003f783e8f3ba8580087c3ab18f0b7b61d0e1c6d0ca49c595bed.png"
                           />
                         </div>
                         <img
                           class="image_27"
-                          referrerpolicy="no-referrer"
                           src="./assets/img/SketchPnga9a5afd4fe33823dc548ccc9df82589d8624da732aa8c860d35a5d9c099de033.png"
                         />
                         <div class="section_32 flex-col justify-between">
                           <span class="text_154">8,000</span>
                           <img
                             class="image_28"
-                            referrerpolicy="no-referrer"
                             src="./assets/img/SketchPngbb6d53adfca02bd79e4f135db9d6c67dce359b08ca4ce6fea53a50a962de1aff.png"
                           />
                         </div>
@@ -314,7 +286,6 @@
                           <span class="text_155">5,000</span>
                           <img
                             class="image_29"
-                            referrerpolicy="no-referrer"
                             src="./assets/img/SketchPng87f2d7a4f2ac144e07a68aa6c96441ce715aebc1fe96679ca40a4eee780a1395.png"
                           />
                         </div>
@@ -332,13 +303,11 @@
                   </div>
                   <img
                     class="image_8"
-                    referrerpolicy="no-referrer"
                     src="./assets/img/SketchPng75c727503552e3b6098e487849f75da58f9e85cd51f518fff7cfe09bd846bd65.png"
                   />
                   <div class="text-wrapper_29 flex-col">
                     <img
                       class="text_117"
-                      referrerpolicy="no-referrer"
                       src="./assets/img/tingxianshichang.png"
                     />
                   </div>
@@ -369,19 +338,17 @@
                   </div>
                   <img
                     class="image_18"
-                    referrerpolicy="no-referrer"
                     src="./assets/img/SketchPng75c727503552e3b6098e487849f75da58f9e85cd51f518fff7cfe09bd846bd65.png"
                   />
                 </div>
               </div>
             </div>
             <div class="text-wrapper_9 flex-col">
-              <img class="text_38" referrerpolicy="no-referrer" src="./assets/img/jiaofu.png" />
+              <img class="text_38" src="./assets/img/jiaofu.png" />
             </div>
             <div class="text-wrapper_25 flex-col">
               <img
                 class="text_113"
-                referrerpolicy="no-referrer"
                 src="./assets/img/shebeinengxiao.png"
               />
               <!-- 创建维修任务入口按钮 -->
@@ -390,25 +357,22 @@
             <div class="text-wrapper_26 flex-col">
               <img
                 class="text_114"
-                referrerpolicy="no-referrer"
                 src="./assets/img/yijizhibiaoxiangqing.png"
               />
             </div>
             <div class="text-wrapper_27 flex-col">
               <img
                 class="text_115"
-                referrerpolicy="no-referrer"
                 src="./assets/img/guanjianqushi.png"
               />
             </div>
             <div class="text-wrapper_28 flex-col">
-              <img class="text_116" referrerpolicy="no-referrer" src="./assets/img/zhiliang.png" />
+              <img class="text_116" src="./assets/img/zhiliang.png" />
             </div>
           </div>
           <div class="section_17 flex-row">
             <img
               class="text_118"
-              referrerpolicy="no-referrer"
               src="./assets/img/dianchichejian.png"
             />
             <div class="section_34 flex-col justify-between">
@@ -416,7 +380,6 @@
               <div class="image-wrapper_10 flex-col">
                 <img
                   class="image_19"
-                  referrerpolicy="no-referrer"
                   src="./assets/img/SketchPng6ef634c36496a5452031e9b8b9cf706c4561f8ce50f45461012f2e808ac925d2.png"
                 />
               </div>
@@ -424,7 +387,6 @@
             <div class="image-wrapper_11 flex-col align-center">
               <img
                 class="image_20"
-                referrerpolicy="no-referrer"
                 src="./assets/img/SketchPng23afe756a718a100a7df5994f3ff3e053d228fbc3cd08ab7c996677b6ed9954c.png"
               />
             </div>
