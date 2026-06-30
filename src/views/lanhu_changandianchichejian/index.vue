@@ -453,6 +453,8 @@ import {
 import type { OutputTrendItem, FtrTrendItem } from '@/api/modules/changan'
 import { messenger } from '@/composables/messenger'
 
+type EChartsInstance = ReturnType<typeof echarts.init>
+
 const MaintenanceTaskModal = defineAsyncComponent(
   () => import('./components/MaintenanceTaskModal.vue')
 )
@@ -477,26 +479,61 @@ const jphText = ref('--') // JPH 加工节拍（API_506252，total_jph）
 
 // 产量趋势图（changan_output_trend）
 const outputTrendRef = ref<HTMLElement | null>(null)
-let outputTrendChart: ReturnType<typeof echarts.init> | null = null
+let outputTrendChart: EChartsInstance | null = null
 const ftrTrendRef = ref<HTMLElement | null>(null)
-let ftrTrendChart: ReturnType<typeof echarts.init> | null = null
+let ftrTrendChart: EChartsInstance | null = null
 
 // FTR 环形进度图（替换原 label_3 静态切图，进度 = FTR%，环内不显示数字）
 const ftrRingRef = ref<HTMLElement | null>(null)
-let ftrRingChart: ReturnType<typeof echarts.init> | null = null
+let ftrRingChart: EChartsInstance | null = null
 
 // C/1000 环形进度图（替换原 label_4 静态切图，风格与 FTR 一致，红色）
 const c1000RingRef = ref<HTMLElement | null>(null)
-let c1000RingChart: ReturnType<typeof echarts.init> | null = null
+let c1000RingChart: EChartsInstance | null = null
 
 // 出勤率环形进度图（替换原 label_10 静态切图，风格与 FTR 一致，青蓝色）
 const attendanceRingRef = ref<HTMLElement | null>(null)
-let attendanceRingChart: ReturnType<typeof echarts.init> | null = null
+let attendanceRingChart: EChartsInstance | null = null
+let isUnmounted = false
 
-function renderFtrRing(percent: number) {
-  if (!ftrRingRef.value) return
-  ftrRingChart = echarts.init(ftrRingRef.value)
-  ftrRingChart.setOption({
+type RingChartOptions = {
+  el: HTMLElement | null
+  chart: EChartsInstance | null
+  name: string
+  percent: number
+  color: string
+  tooltipValue: () => string
+}
+
+type SettledTask = {
+  errorMessage: string
+  run: () => Promise<void>
+}
+
+function getOrInitChart(el: HTMLElement | null, chart: EChartsInstance | null) {
+  if (!el || isUnmounted) return null
+  return chart ?? echarts.init(el)
+}
+
+function disposeChart(chart: EChartsInstance | null) {
+  if (!chart) return
+  chart.clear()
+  chart.dispose()
+}
+
+async function runSettledTasks(tasks: SettledTask[]) {
+  const results = await Promise.allSettled(tasks.map((task) => task.run()))
+  results.forEach((result, index) => {
+    if (result.status === 'rejected') {
+      console.error(tasks[index].errorMessage, result.reason)
+    }
+  })
+}
+
+function renderRingChart(options: RingChartOptions) {
+  const chart = getOrInitChart(options.el, options.chart)
+  if (!chart) return null
+  chart.setOption({
     // 鼠标浮到环上展示数值（默认样式 + marker 小圆点，与下方折线图一致）
     tooltip: {
       show: true,
@@ -506,7 +543,7 @@ function renderFtrRing(percent: number) {
       position: (pos: number[], _p: any, _dom: any, _rect: any, size: any) => {
         return [pos[0] + 14, pos[1] - size.contentSize[1] / 2]
       },
-      formatter: (p: any) => `${p.marker}FTR&nbsp;&nbsp;${ftrText.value}`,
+      formatter: (p: any) => `${p.marker}${options.name}&nbsp;&nbsp;${options.tooltipValue()}`,
     },
     series: [
       {
@@ -521,12 +558,12 @@ function renderFtrRing(percent: number) {
         silent: false,
         data: [
           {
-            value: percent, // 进度 = FTR%
-            name: 'FTR',
-            itemStyle: { color: '#05ffc9', borderRadius: 4 }, // 与右侧数值同色，端部圆角
+            value: options.percent,
+            name: options.name,
+            itemStyle: { color: options.color, borderRadius: 4 },
           },
           {
-            value: 100 - percent, // 剩余轨道
+            value: 100 - options.percent, // 剩余轨道
             name: '',
             itemStyle: { color: 'rgba(120,200,255,0.18)' },
             tooltip: { show: false }, // 轨道不弹 tooltip
@@ -536,99 +573,47 @@ function renderFtrRing(percent: number) {
       },
     ],
   })
+  return chart
+}
+
+function renderFtrRing(percent: number) {
+  ftrRingChart = renderRingChart({
+    el: ftrRingRef.value,
+    chart: ftrRingChart,
+    name: 'FTR',
+    percent,
+    color: '#05ffc9',
+    tooltipValue: () => ftrText.value,
+  })
 }
 
 // C/1000 环形进度图（临时数值，待接定义后替换为真实占比）
 function renderC1000Ring(percent: number) {
-  if (!c1000RingRef.value) return
-  c1000RingChart = echarts.init(c1000RingRef.value)
-  c1000RingChart.setOption({
-    tooltip: {
-      show: true,
-      trigger: 'item',
-      confine: false,
-      position: (pos: number[], _p: any, _dom: any, _rect: any, size: any) => {
-        return [pos[0] + 14, pos[1] - size.contentSize[1] / 2]
-      },
-      formatter: (p: any) => `${p.marker}C/1000&nbsp;&nbsp;${c1000Text.value}`,
-    },
-    series: [
-      {
-        type: 'pie',
-        radius: ['68%', '92%'],
-        center: ['50%', '50%'],
-        startAngle: 90,
-        clockwise: true,
-        label: { show: false },
-        labelLine: { show: false },
-        emphasis: { scale: false },
-        silent: false,
-        data: [
-          {
-            value: percent,
-            name: 'C/1000',
-            itemStyle: { color: '#f35454', borderRadius: 4 }, // 与右侧数值同色（红）
-          },
-          {
-            value: 100 - percent,
-            name: '',
-            itemStyle: { color: 'rgba(120,200,255,0.18)' },
-            tooltip: { show: false },
-            emphasis: { disabled: true },
-          },
-        ],
-      },
-    ],
+  c1000RingChart = renderRingChart({
+    el: c1000RingRef.value,
+    chart: c1000RingChart,
+    name: 'C/1000',
+    percent,
+    color: '#f35454',
+    tooltipValue: () => c1000Text.value,
   })
 }
 
 // 出勤率环形进度图（数值即百分比，进度有真实含义）
 function renderAttendanceRing(percent: number) {
-  if (!attendanceRingRef.value) return
-  attendanceRingChart = echarts.init(attendanceRingRef.value)
-  attendanceRingChart.setOption({
-    tooltip: {
-      show: true,
-      trigger: 'item',
-      confine: false,
-      position: (pos: number[], _p: any, _dom: any, _rect: any, size: any) => {
-        return [pos[0] + 14, pos[1] - size.contentSize[1] / 2]
-      },
-      formatter: (p: any) => `${p.marker}出勤率&nbsp;&nbsp;${percent}%`,
-    },
-    series: [
-      {
-        type: 'pie',
-        radius: ['68%', '92%'],
-        center: ['50%', '50%'],
-        startAngle: 90,
-        clockwise: true,
-        label: { show: false },
-        labelLine: { show: false },
-        emphasis: { scale: false },
-        silent: false,
-        data: [
-          {
-            value: percent,
-            name: '出勤率',
-            itemStyle: { color: '#05efff', borderRadius: 4 }, // 与右侧数值同色（青蓝）
-          },
-          {
-            value: 100 - percent,
-            name: '',
-            itemStyle: { color: 'rgba(120,200,255,0.18)' },
-            tooltip: { show: false },
-            emphasis: { disabled: true },
-          },
-        ],
-      },
-    ],
+  attendanceRingChart = renderRingChart({
+    el: attendanceRingRef.value,
+    chart: attendanceRingChart,
+    name: '出勤率',
+    percent,
+    color: '#05efff',
+    tooltipValue: () => `${percent}%`,
   })
 }
 
 function renderOutputTrend(data: OutputTrendItem[]) {
-  if (!outputTrendRef.value) return
-  outputTrendChart = echarts.init(outputTrendRef.value)
+  outputTrendChart = getOrInitChart(outputTrendRef.value, outputTrendChart)
+  if (!outputTrendChart) return
   const dates = data.map((d) => {
     const p = d.OPERATION_DT.split('-')
     return `${Number(p[1])}/${Number(p[2])}`
@@ -672,9 +657,9 @@ function renderOutputTrend(data: OutputTrendItem[]) {
 }
 
 function renderFtrTrend(data: FtrTrendItem[]) {
-  if (!ftrTrendRef.value) return
+  ftrTrendChart = getOrInitChart(ftrTrendRef.value, ftrTrendChart)
+  if (!ftrTrendChart) return
   const valid = data.filter((d): d is { OPERATION_DT: string; ftt: number } => d.ftt != null)
-  ftrTrendChart = echarts.init(ftrTrendRef.value)
   const dates = valid.map((d) => {
     const p = d.OPERATION_DT.split('-')
     return `${Number(p[1])}/${Number(p[2])}`
@@ -727,78 +712,124 @@ function handleResize() {
   attendanceRingChart?.resize()
 }
 
-onMounted(async () => {
-  // FTR 一次性通过率
-  try {
-    const res = await getFtr()
-    const ftt = res[0]?.ftt
-    if (ftt != null) {
-      ftrText.value = (ftt * 100).toFixed(2) + '%'
-      renderFtrRing(ftt * 100) // 环形进度与右侧数值保持一致
-    }
-  } catch (e) {
-    console.error('FTR 加载失败', e)
-  }
-  // 产量汇总
-  try {
-    const res = await getOutput()
-    const out = res[0]?.total_output
-    if (out != null) outputText.value = String(out)
-  } catch (e) {
-    console.error('产量加载失败', e)
-  }
-  // C1000 缺陷率
-  try {
-    const res = await getC1000()
-    const v = res[0]?.c1000
-    if (v != null) c1000Text.value = v.toFixed(2)
-  } catch (e) {
-    console.error('C1000 加载失败', e)
-  }
+async function loadMetrics() {
+  const tasks = [
+    {
+      errorMessage: 'FTR 加载失败',
+      run: async () => {
+        // FTR 一次性通过率
+        const res = await getFtr()
+        if (isUnmounted) return
+        const ftt = res[0]?.ftt
+        if (ftt != null) {
+          ftrText.value = (ftt * 100).toFixed(2) + '%'
+          renderFtrRing(ftt * 100) // 环形进度与右侧数值保持一致
+        }
+      },
+    },
+    {
+      errorMessage: '产量加载失败',
+      run: async () => {
+        // 产量汇总
+        const res = await getOutput()
+        if (isUnmounted) return
+        const out = res[0]?.total_output
+        if (out != null) outputText.value = String(out)
+      },
+    },
+    {
+      errorMessage: 'C1000 加载失败',
+      run: async () => {
+        // C1000 缺陷率
+        const res = await getC1000()
+        if (isUnmounted) return
+        const v = res[0]?.c1000
+        if (v != null) {
+          c1000Text.value = v.toFixed(2)
+          renderC1000Ring(75)
+        }
+      },
+    },
+    {
+      errorMessage: '停机统计加载失败',
+      run: async () => {
+        // 停线时长（各天 total_duration 求和）
+        const res = await getDowntime()
+        if (isUnmounted) return
+        const sum = res.reduce((acc, d) => acc + (d.total_duration ?? 0), 0)
+        downtimeText.value = String(Math.round(sum))
+      },
+    },
+    {
+      errorMessage: 'JPH 加载失败',
+      run: async () => {
+        // JPH 加工节拍（按单日查询，固定取 2026-06-12 —— 该日有数据）
+        const res = await getJph({ p_jph_date: '2026-06-12' })
+        if (isUnmounted) return
+        const jph = res[0]?.total_jph
+        if (jph != null) jphText.value = jph.toFixed(2)
+      },
+    },
+  ]
+
   // C/1000 环形图：暂用临时进度值（接口未定义占比口径，待补充）
   renderC1000Ring(75)
   // 出勤率环形图：当前数值写死 98%
   renderAttendanceRing(98)
-  // 停线时长（各天 total_duration 求和）
-  try {
-    const res = await getDowntime()
-    const sum = res.reduce((acc, d) => acc + (d.total_duration ?? 0), 0)
-    downtimeText.value = String(Math.round(sum))
-  } catch (e) {
-    console.error('停机统计加载失败', e)
-  }
-  // JPH 加工节拍（按单日查询，固定取 2026-06-12 —— 该日有数据）
-  try {
-    const res = await getJph({ p_jph_date: '2026-06-12' })
-    const jph = res[0]?.total_jph
-    if (jph != null) jphText.value = jph.toFixed(2)
-  } catch (e) {
-    console.error('JPH 加载失败', e)
-  }
-  // 产量趋势图
-  try {
-    const trend = await getOutputTrend()
-    renderOutputTrend(trend)
-  } catch (e) {
-    console.error('产量趋势加载失败', e)
-  }
-  // FTR 趋势图
-  try {
-    const trend = await getFtrTrend()
-    renderFtrTrend(trend)
-  } catch (e) {
-    console.error('FTR趋势加载失败', e)
-  }
+
+  await runSettledTasks(tasks)
+}
+
+async function loadCharts() {
+  const tasks = [
+    {
+      errorMessage: '产量趋势加载失败',
+      run: async () => {
+        // 产量趋势图
+        const trend = await getOutputTrend()
+        if (isUnmounted) return
+        renderOutputTrend(trend)
+      },
+    },
+    {
+      errorMessage: 'FTR趋势加载失败',
+      run: async () => {
+        // FTR 趋势图
+        const trend = await getFtrTrend()
+        if (isUnmounted) return
+        renderFtrTrend(trend)
+      },
+    },
+  ]
+
+  await runSettledTasks(tasks)
+}
+
+async function loadDashboardData() {
+  await loadMetrics()
+  if (isUnmounted) return
+  await loadCharts()
+}
+
+onMounted(() => {
+  isUnmounted = false
   window.addEventListener('resize', handleResize)
+  loadDashboardData()
 })
 
 onBeforeUnmount(() => {
+  isUnmounted = true
   window.removeEventListener('resize', handleResize)
-  outputTrendChart?.dispose()
-  ftrTrendChart?.dispose()
-  ftrRingChart?.dispose()
-  c1000RingChart?.dispose()
-  attendanceRingChart?.dispose()
+  disposeChart(outputTrendChart)
+  disposeChart(ftrTrendChart)
+  disposeChart(ftrRingChart)
+  disposeChart(c1000RingChart)
+  disposeChart(attendanceRingChart)
+  outputTrendChart = null
+  ftrTrendChart = null
+  ftrRingChart = null
+  c1000RingChart = null
+  attendanceRingChart = null
 })
 
 // 一级指标详情表格数据
