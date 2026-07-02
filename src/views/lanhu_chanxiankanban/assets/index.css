@@ -102,10 +102,9 @@
   color: rgba(255, 255, 255, 1);
   font-size: 0.729vw;
   font-family: SourceHanSansSC-Regular;
-  font-weight: NaN;
   text-align: left;
   white-space: nowrap;
-  line-height: 1.944vh;
+  line-height: 1.344vh;
 }
 
 .box_3 {
@@ -1312,7 +1311,7 @@
 
 .text-group_1 {
   width: 2.917vw;
-  height: 1.296vh;
+  height: 1.944vh;
   overflow-wrap: break-word;
   color: rgba(255, 255, 255, 1);
   font-size: 0.729vw;
@@ -1320,14 +1319,14 @@
   font-weight: NaN;
   text-align: left;
   white-space: nowrap;
-  line-height: 1.944vh;
+  line-height: 1.544vh;
 }
 
 .group_11 {
   position: relative;
   width: 22.292vw;
   height: 15.648vh;
-  margin: 1.296vh 0 0 1.354vw;
+  margin: 2vh 0 0 1.354vw;
 }
 
 .text-wrapper_20 {
@@ -1557,7 +1556,6 @@
   color: rgba(255, 255, 255, 1);
   font-size: 0.625vw;
   font-family: SourceHanSansSC-Regular;
-  font-weight: NaN;
   text-align: center;
   white-space: nowrap;
   line-height: 1.667vh;
@@ -1830,9 +1828,9 @@
 }
 
 .section_10 {
-  width: 96.979vw;
+  width: 97.813vw;
   height: 25.37vh;
-  margin: 1.759vh 0 2.13vh 1.146vw;
+  margin: 1.959vh 0 0 1.146vw;
 }
 
 .box_11 {
@@ -2277,7 +2275,7 @@
   font-weight: NaN;
   text-align: left;
   white-space: nowrap;
-  line-height: 1.944vh;
+  line-height: 1.444vh;
 }
 
 .image-text_3 {
@@ -2304,7 +2302,7 @@
   font-weight: NaN;
   text-align: left;
   white-space: nowrap;
-  line-height: 1.944vh;
+  line-height: 1.444vh;
 }
 
 .group_20 {
@@ -2337,7 +2335,7 @@
   font-weight: NaN;
   text-align: left;
   white-space: nowrap;
-  line-height: 1.944vh;
+  line-height: 1.244vh;
 }
 
 .image-text_5 {
@@ -2364,7 +2362,7 @@
   font-weight: NaN;
   text-align: left;
   white-space: nowrap;
-  line-height: 1.944vh;
+  line-height: 1.244vh;
 }
 
 .image_32 {
@@ -2406,7 +2404,7 @@
 .text_108 {
   width: 9.167vw;
   height: 1.667vh;
-  margin: 0.741vh 0 0 2.396vw;
+  margin: 0.341vh 0 0 2.396vw;
 }
 
 .image_33 {
