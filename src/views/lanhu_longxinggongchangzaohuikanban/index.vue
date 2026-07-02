@@ -561,30 +561,7 @@
               />
             </div>
           </div>
-          <div class="group_27 flex-row">
-            <img
-              class="text_100"
-              referrerpolicy="no-referrer"
-              src="./assets/img/zaohuikanbanwenzi.png"
-            />
-            <div class="section_12 flex-col justify-between">
-              <span class="text_101">2026-06-12&nbsp;09:20:30</span>
-              <div class="image-wrapper_17 flex-col">
-                <img
-                  class="image_24"
-                  referrerpolicy="no-referrer"
-                  src="./assets/img/SketchPng6ef634c36496a5452031e9b8b9cf706c4561f8ce50f45461012f2e808ac925d2.png"
-                />
-              </div>
-            </div>
-            <div class="image-wrapper_18 flex-col align-center">
-              <img
-                class="image_25"
-                referrerpolicy="no-referrer"
-                src="./assets/img/SketchPng23afe756a718a100a7df5994f3ff3e053d228fbc3cd08ab7c996677b6ed9954c.png"
-              />
-            </div>
-          </div>
+          <DashboardHeader :title-img="titleImg" />
         </div>
       </div>
     </div>
@@ -608,11 +585,13 @@
 <script setup lang="ts">
 // Page component
 import { ref } from 'vue'
+import DashboardHeader from '@/components/DashboardHeader'
 import ZhizaozhouqiDialog from '../lanhu_zhizaozhouqi/index.vue'
 import QiantingDialog from '../lanhu_qiantingshuju/index.vue'
 import ZongzhuangDialog from '../lanhu_zongzhuangxiaxianwaiguanxiaxian/index.vue'
 import ChanliangShuliangDialog from '../lanhu_chanliangjihuawanchenglvshuliang/index.vue'
 import ChanliangShijianDialog from '../lanhu_chanliangjihuawanchenglvshijian/index.vue'
+import titleImg from './assets/img/zaohuikanbanwenzi.png'
 
 // 各弹框显示状态
 const showZhouqiDialog = ref(false)

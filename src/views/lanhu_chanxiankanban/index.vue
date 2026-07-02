@@ -525,40 +525,17 @@
             src="./assets/img/SketchPng39ecde2147390c62dae6e65fad7d8d5dddb1256ab7719b51e46cba39f5198052.png"
           />
         </div>
-        <div class="group_21 flex-row">
-          <div class="text-wrapper_28 flex-col justify-center">
-            <img
-              class="text_109"
-              referrerpolicy="no-referrer"
-              src="./assets/img/chanxianshujukanban.png"
-            />
-          </div>
-          <div class="group_22 flex-col justify-between">
-            <span class="text_110">2026-06-26&nbsp;09:20:30</span>
-            <div class="image-wrapper_17 flex-col">
-              <img
-                class="image_34"
-                referrerpolicy="no-referrer"
-                src="./assets/img/SketchPng9dac567b8c958167f47587fa77e6eb95ee2b16bb4e7645419dffb7b38d6eba57.png"
-              />
-            </div>
-          </div>
-          <div class="image-wrapper_16 flex-col align-center">
-            <img
-              class="image_35"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPng23afe756a718a100a7df5994f3ff3e053d228fbc3cd08ab7c996677b6ed9954c.png"
-            />
-          </div>
-        </div>
+        <DashboardHeader :title-img="titleImg" />
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+import DashboardHeader from '@/components/DashboardHeader'
 import xuanzhongBg from './assets/img/xuanzhong.png'
 import weixuanBg from './assets/img/weixuan.png'
+import titleImg from './assets/img/chanxianshujukanban.png'
 
 const productionLines = [
   { id: 1, label: '产线1' },

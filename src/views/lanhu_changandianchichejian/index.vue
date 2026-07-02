@@ -370,27 +370,7 @@
               <img class="text_116" src="./assets/img/zhiliang.png" />
             </div>
           </div>
-          <div class="section_17 flex-row">
-            <img
-              class="text_118"
-              src="./assets/img/dianchichejian.png"
-            />
-            <div class="section_34 flex-col justify-between">
-              <span class="text_119">2026-06-22&nbsp;09:20:30</span>
-              <div class="image-wrapper_10 flex-col">
-                <img
-                  class="image_19"
-                  src="./assets/img/SketchPng6ef634c36496a5452031e9b8b9cf706c4561f8ce50f45461012f2e808ac925d2.png"
-                />
-              </div>
-            </div>
-            <div class="image-wrapper_11 flex-col align-center">
-              <img
-                class="image_20"
-                src="./assets/img/SketchPng23afe756a718a100a7df5994f3ff3e053d228fbc3cd08ab7c996677b6ed9954c.png"
-              />
-            </div>
-          </div>
+          <DashboardHeader :title-img="titleImg" />
         </div>
       </div>
     </div>
@@ -406,6 +386,8 @@ import { init, use, graphic, type EChartsType } from 'echarts/core'
 import { LineChart, PieChart } from 'echarts/charts'
 import { GridComponent, TooltipComponent } from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
+import DashboardHeader from '@/components/DashboardHeader'
+import titleImg from './assets/img/dianchichejian.png'
 import {
   getFtr,
   getOutput,
