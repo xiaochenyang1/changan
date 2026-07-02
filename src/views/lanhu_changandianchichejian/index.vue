@@ -703,7 +703,7 @@ async function loadMetrics() {
       errorMessage: '停机统计加载失败',
       run: async () => {
         // 停线时长（各天 total_duration 求和）
-        const res = await getDowntime()
+        const res = await getDowntime({ stat_date: '2026-05-01', end_date: '2026-06-30' })
         if (isUnmounted) return
         const sum = res.reduce((acc, d) => acc + (d.total_duration ?? 0), 0)
         downtimeText.value = String(Math.round(sum))
