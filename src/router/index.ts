@@ -8,6 +8,7 @@ const LanhuChanliangjihuawanchenglvshijian = () => import('@/views/lanhu_chanlia
 const LanhuZhizaozhouqi = () => import('@/views/lanhu_zhizaozhouqi/index.vue')
 const LanhuChangandianchichejian = () => import('@/views/lanhu_changandianchichejian/index.vue')
 const LanhuLongxinggongchangzaohuikanban = () => import('@/views/lanhu_longxinggongchangzaohuikanban/index.vue')
+const LanhuChanxiankanban = () => import('@/views/lanhu_chanxiankanban/index.vue')
 
 const routes: RouteRecordRaw[] = [
   {
@@ -56,6 +57,12 @@ const routes: RouteRecordRaw[] = [
     name: 'lanhu_longxinggongchangzaohuikanban',
     component: LanhuLongxinggongchangzaohuikanban,
     meta: { title: '龙兴工厂早会看板' },
+  },
+  {
+    path: '/lanhu_chanxiankanban',
+    name: 'lanhu_chanxiankanban',
+    component: LanhuChanxiankanban,
+    meta: { title: '产线看板' },
   },
 ]
 
