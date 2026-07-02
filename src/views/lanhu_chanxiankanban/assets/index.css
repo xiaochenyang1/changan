@@ -1,5 +1,6 @@
 .page {
-  background-color: rgba(46, 61, 97, 1);
+  /* background-color: rgba(46, 61, 97, 1); */
+  background-color: transparent;
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -8,14 +9,16 @@
 
 .block_1 {
   height: 99.815vh;
-  background: url(./img/SketchPngafd4e50cf3903ab7983fbedb9154bf38175ba84265e0465fea2fee2e2014c632.png)
+  /* background: url(./img/SketchPngafd4e50cf3903ab7983fbedb9154bf38175ba84265e0465fea2fee2e2014c632.png)
     0px 0px no-repeat;
-  background-size: 100vw 99.907vh;
+  background-size: 100.000vw 99.907vh; */
+  background-color: transparent;
   width: 100vw;
 }
 
 .section_1 {
-  background-color: rgba(2, 18, 60, 0.12);
+  /* background-color: rgba(2, 18, 60, 0.12); */
+  background-color: transparent;
   height: 99.907vh;
   margin-top: 0.093vh;
   width: 99.948vw;
