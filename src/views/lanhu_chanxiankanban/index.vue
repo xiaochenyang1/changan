@@ -11,7 +11,7 @@
               :style="{
                 backgroundImage: `url(${activeLine === line.id ? xuanzhongBg : weixuanBg})`,
               }"
-              @click="activeLine = line.id"
+              @click="selectLine(line)"
             >
               <span class="tab-text" :class="{ 'tab-text--active': activeLine === line.id }">{{
                 line.label
@@ -531,13 +531,19 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, onBeforeUnmount, ref } from 'vue'
 import DashboardHeader from '@/components/DashboardHeader'
+import { messenger } from '@/composables/messenger'
 import xuanzhongBg from './assets/img/xuanzhong.png'
 import weixuanBg from './assets/img/weixuan.png'
 import titleImg from './assets/img/chanxianshujukanban.png'
 
-const productionLines = [
+interface ProductionLine {
+  id: number
+  label: string
+}
+
+const productionLines: ProductionLine[] = [
   { id: 1, label: '产线1' },
   { id: 2, label: '产线2' },
   { id: 3, label: '产线3' },
@@ -547,5 +553,40 @@ const productionLines = [
 ]
 
 const activeLine = ref(1)
+
+// 根据产线名称（如「产线1」）选中对应按钮；名称无匹配则忽略
+function applyLineByLabel(label: string) {
+  const target = productionLines.find((line) => line.label === label)
+  if (target) activeLine.value = target.id
+}
+
+// 用户点击切换产线 → 选中按钮 + 通知 SIM3D 场景聚焦对应产线
+// { type: 'FOCUS_ASSET', data: '产线1' }（仅用户主动点击时发送，避免与下发指令形成回环）
+function selectLine(line: ProductionLine) {
+  activeLine.value = line.id
+  messenger.publish('FOCUS_ASSET', line.label)
+}
+
+// SIM3D（父页面）下发的「切换产线」通知：{ type: 'SWITCH_DASHBOARD', data: '产线1' }
+// 注意：SWITCH_DASHBOARD 不带 Cosmo_ 前缀，具名 subscribe 收不到，
+// 必须用 '*' 通配订阅再按 type 过滤（详见 iframeMessage.ts）
+let offSwitch: (() => void) | null = null
+
+onMounted(() => {
+  // 兜底：父页面可能在本组件挂载前就已下发通知，从历史消息回放最近一条
+  const last = [...messenger.messageHistory]
+    .reverse()
+    .find((msg) => msg.type === 'SWITCH_DASHBOARD')
+  if (last) applyLineByLabel(String(last.data))
+
+  offSwitch = messenger.subscribe('*', (msg) => {
+    if (msg.type !== 'SWITCH_DASHBOARD') return
+    applyLineByLabel(String(msg.data))
+  })
+})
+
+onBeforeUnmount(() => {
+  offSwitch?.()
+})
 </script>
 <style scoped lang="css" src="./assets/index.css" />
