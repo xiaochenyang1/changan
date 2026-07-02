@@ -4,22 +4,23 @@
       <div class="section_1 flex-col">
         <div class="group_1 flex-col">
           <div class="section_2 flex-row justify-between">
-            <div class="text-wrapper_1 flex-col"><span class="text_1">产线1</span></div>
-            <div class="text-wrapper_2 flex-col"><span class="text_2">产线2</span></div>
-            <div class="block_2 flex-col">
-              <div class="text-wrapper_3 flex-col"><span class="text_3">产线3</span></div>
+            <div
+              v-for="line in productionLines"
+              :key="line.id"
+              class="tab-item flex-col align-center justify-center"
+              :style="{
+                backgroundImage: `url(${activeLine === line.id ? xuanzhongBg : weixuanBg})`,
+              }"
+              @click="activeLine = line.id"
+            >
+              <span class="tab-text" :class="{ 'tab-text--active': activeLine === line.id }">{{
+                line.label
+              }}</span>
             </div>
-            <div class="block_3 flex-col">
-              <div class="text-wrapper_4 flex-col"><span class="text_4">产线4</span></div>
-            </div>
-            <div class="block_4 flex-col">
-              <div class="text-wrapper_5 flex-col"><span class="text_5">产线5</span></div>
-            </div>
-            <div class="text-wrapper_6 flex-col"><span class="text_6">产线6</span></div>
           </div>
           <div class="section_3 flex-row justify-between">
             <div class="group_2 flex-col">
-              <span class="text_7">产量</span>
+              <img class="text_7" referrerpolicy="no-referrer" src="./assets/img/chanliang.png" />
               <div class="box_1 flex-row justify-between">
                 <div class="box_2 flex-col"></div>
                 <span class="text_8">产量</span>
@@ -157,7 +158,7 @@
               </div>
             </div>
             <div class="group_8 flex-col">
-              <span class="text_28">FTR</span>
+              <img class="text_28" referrerpolicy="no-referrer" src="./assets/img/ftr.png" />
               <div class="block_7 flex-row justify-between">
                 <div class="text-wrapper_10 flex-col">
                   <span class="text_29">100%</span>
@@ -242,7 +243,7 @@
               />
             </div>
             <div class="box_10 flex-col">
-              <span class="text_67">C1000</span>
+              <img class="text_67" referrerpolicy="no-referrer" src="./assets/img/c1000.png" />
               <div class="image-text_1 flex-row justify-between">
                 <div class="group_10 flex-col"></div>
                 <span class="text-group_1">不良数量</span>
@@ -394,7 +395,9 @@
           </div>
           <div class="section_10 flex-row justify-between">
             <div class="box_11 flex-col">
-              <div class="text-wrapper_23 flex-row"><span class="text_87">停线时长</span></div>
+              <div class="text-wrapper_23 flex-row">
+                <img class="text_87" referrerpolicy="no-referrer" src="./assets/img/tingxianshichang.png" />
+              </div>
               <div class="box_12 flex-row">
                 <div class="text-wrapper_24 flex-col">
                   <span class="text_88">100</span>
@@ -510,8 +513,12 @@
               />
             </div>
           </div>
-          <div class="text-wrapper_26 flex-col"><span class="text_107">GPH</span></div>
-          <div class="text-wrapper_27 flex-col"><span class="text_108">不良缺陷类型占比</span></div>
+          <div class="text-wrapper_26 flex-col">
+            <img class="text_107" referrerpolicy="no-referrer" src="./assets/img/gph.png" />
+          </div>
+          <div class="text-wrapper_27 flex-col">
+            <img class="text_108" referrerpolicy="no-referrer" src="./assets/img/buliangquexianzhanbi.png" />
+          </div>
           <img
             class="image_33"
             referrerpolicy="no-referrer"
@@ -519,14 +526,22 @@
           />
         </div>
         <div class="group_21 flex-row">
-          <span class="text_109">产线数据看板</span>
+          <div class="text-wrapper_28 flex-col justify-center">
+            <img
+              class="text_109"
+              referrerpolicy="no-referrer"
+              src="./assets/img/chanxianshujukanban.png"
+            />
+          </div>
           <div class="group_22 flex-col justify-between">
             <span class="text_110">2026-06-26&nbsp;09:20:30</span>
-            <img
-              class="image_34"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPng9dac567b8c958167f47587fa77e6eb95ee2b16bb4e7645419dffb7b38d6eba57.png"
-            />
+            <div class="image-wrapper_17 flex-col">
+              <img
+                class="image_34"
+                referrerpolicy="no-referrer"
+                src="./assets/img/SketchPng9dac567b8c958167f47587fa77e6eb95ee2b16bb4e7645419dffb7b38d6eba57.png"
+              />
+            </div>
           </div>
           <div class="image-wrapper_16 flex-col align-center">
             <img
@@ -540,14 +555,20 @@
     </div>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      constants: {}
-    };
-  },
-  methods: {}
-};
+<script setup lang="ts">
+import { ref } from 'vue'
+import xuanzhongBg from './assets/img/xuanzhong.png'
+import weixuanBg from './assets/img/weixuan.png'
+
+const productionLines = [
+  { id: 1, label: '产线1' },
+  { id: 2, label: '产线2' },
+  { id: 3, label: '产线3' },
+  { id: 4, label: '产线4' },
+  { id: 5, label: '产线5' },
+  { id: 6, label: '产线6' },
+]
+
+const activeLine = ref(1)
 </script>
 <style scoped lang="css" src="./assets/index.css" />
