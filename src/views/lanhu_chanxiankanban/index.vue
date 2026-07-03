@@ -396,7 +396,11 @@
           <div class="section_10 flex-row justify-between">
             <div class="box_11 flex-col">
               <div class="text-wrapper_23 flex-row">
-                <img class="text_87" referrerpolicy="no-referrer" src="./assets/img/tingxianshichang.png" />
+                <img
+                  class="text_87"
+                  referrerpolicy="no-referrer"
+                  src="./assets/img/tingxianshichang.png"
+                />
               </div>
               <div class="box_12 flex-row">
                 <div class="text-wrapper_24 flex-col">
@@ -517,7 +521,11 @@
             <img class="text_107" referrerpolicy="no-referrer" src="./assets/img/gph.png" />
           </div>
           <div class="text-wrapper_27 flex-col">
-            <img class="text_108" referrerpolicy="no-referrer" src="./assets/img/buliangquexianzhanbi.png" />
+            <img
+              class="text_108"
+              referrerpolicy="no-referrer"
+              src="./assets/img/buliangquexianzhanbi.png"
+            />
           </div>
           <img
             class="image_33"
@@ -533,7 +541,7 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import DashboardHeader from '@/components/DashboardHeader'
-import { messenger } from '@/composables/messenger'
+import { messenger, triggerLowCode } from '@/composables/messenger'
 import xuanzhongBg from './assets/img/xuanzhong.png'
 import weixuanBg from './assets/img/weixuan.png'
 import titleImg from './assets/img/chanxianshujukanban.png'
@@ -561,10 +569,10 @@ function applyLineByLabel(label: string) {
 }
 
 // 用户点击切换产线 → 选中按钮 + 通知 SIM3D 场景聚焦对应产线
-// { type: 'FOCUS_ASSET', data: '产线1' }（仅用户主动点击时发送，避免与下发指令形成回环）
+// （仅用户主动点击时发送，避免与下发指令形成回环）
 function selectLine(line: ProductionLine) {
   activeLine.value = line.id
-  messenger.publish('FOCUS_ASSET', line.label)
+  triggerLowCode('FOCUS_ASSET', line.label)
 }
 
 // SIM3D（父页面）下发的「切换产线」通知：{ type: 'Cosmo_SWITCH_DASHBOARD', data: '产线1' }

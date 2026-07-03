@@ -398,7 +398,7 @@ import {
   getJph,
 } from '@/api/modules/changan'
 import type { OutputTrendItem, FtrTrendItem } from '@/api/modules/changan'
-import { messenger } from '@/composables/messenger'
+import { triggerLowCode } from '@/composables/messenger'
 
 use([LineChart, PieChart, GridComponent, TooltipComponent, CanvasRenderer])
 
@@ -408,12 +408,9 @@ const MaintenanceTaskModal = defineAsyncComponent(
   () => import('./components/MaintenanceTaskModal.vue')
 )
 
-// 点击「设备千台停机率」→ 通知 3D 场景聚焦对应设备（二级蓝图使用 Cosmo_LowCode_trigger 固定 type）
+// 点击「设备千台停机率」→ 通知 3D 场景聚焦对应设备
 function handleDowntimeRateClick() {
-  messenger.publish('Cosmo_LowCode_trigger', {
-    eventName: 'focus-device',
-    eventData: '电芯拆垛上料',
-  })
+  triggerLowCode('focus-device', '电芯拆垛上料')
 }
 
 // 创建维修任务弹框开关
