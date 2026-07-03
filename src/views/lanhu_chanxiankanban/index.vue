@@ -567,20 +567,20 @@ function selectLine(line: ProductionLine) {
   messenger.publish('FOCUS_ASSET', line.label)
 }
 
-// SIM3D（父页面）下发的「切换产线」通知：{ type: 'SWITCH_DASHBOARD', data: '产线1' }
-// 注意：SWITCH_DASHBOARD 不带 Cosmo_ 前缀，具名 subscribe 收不到，
-// 必须用 '*' 通配订阅再按 type 过滤（详见 iframeMessage.ts）
+// SIM3D（父页面）下发的「切换产线」通知：{ type: 'Cosmo_SWITCH_DASHBOARD', data: '产线1' }
+// 父页面下发时业务消息带 Cosmo_ 前缀，故按带前缀的完整 type 过滤
+const SWITCH_DASHBOARD_TYPE = 'Cosmo_SWITCH_DASHBOARD'
 let offSwitch: (() => void) | null = null
 
 onMounted(() => {
   // 兜底：父页面可能在本组件挂载前就已下发通知，从历史消息回放最近一条
   const last = [...messenger.messageHistory]
     .reverse()
-    .find((msg) => msg.type === 'SWITCH_DASHBOARD')
+    .find((msg) => msg.type === SWITCH_DASHBOARD_TYPE)
   if (last) applyLineByLabel(String(last.data))
 
   offSwitch = messenger.subscribe('*', (msg) => {
-    if (msg.type !== 'SWITCH_DASHBOARD') return
+    if (msg.type !== SWITCH_DASHBOARD_TYPE) return
     applyLineByLabel(String(msg.data))
   })
 })
