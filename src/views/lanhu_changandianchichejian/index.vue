@@ -356,7 +356,10 @@
 <script setup lang="ts">
 // 电池车间大屏页面
 import { defineAsyncComponent, ref, onMounted, onBeforeUnmount } from 'vue'
-import * as echarts from 'echarts'
+import { init, use, graphic, type EChartsType } from 'echarts/core'
+import { LineChart, PieChart } from 'echarts/charts'
+import { GridComponent, TooltipComponent } from 'echarts/components'
+import { CanvasRenderer } from 'echarts/renderers'
 import {
   getFtr,
   getOutput,
@@ -368,6 +371,8 @@ import {
 } from '@/api/modules/changan'
 import type { OutputTrendItem, FtrTrendItem } from '@/api/modules/changan'
 import { triggerLowCode } from '@/composables/messenger'
+import DashboardHeader from '@/components/DashboardHeader'
+import titleImg from './assets/img/dianchichejian.png'
 
 use([LineChart, PieChart, GridComponent, TooltipComponent, CanvasRenderer])
 
@@ -377,9 +382,9 @@ const MaintenanceTaskModal = defineAsyncComponent(
   () => import('./components/MaintenanceTaskModal.vue')
 )
 
-// 点击「设备千台停机率」→ 通知 3D 场景聚焦对应设备（FOCUS_ASSET 不带 Cosmo_ 前缀，直接 publish）
+// 点击「设备千台停机率」→ 通知 3D 场景聚焦对应设备
 function handleDowntimeRateClick() {
-  messenger.publish('FOCUS_ASSET', '电芯拆垛上料')
+  triggerLowCode('focus-device', '电芯拆垛上料')
 }
 
 // 创建维修任务弹框开关

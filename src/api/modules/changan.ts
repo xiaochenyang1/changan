@@ -55,7 +55,7 @@ const defaultRange: DateRange = { stat_date: '2026-01-01', end_date: '2026-06-30
 
 function call<T>(name: string, range: DateRange = defaultRange): Promise<T> {
   // 响应拦截已返回 data，故第二个泛型即最终返回类型
-  return gw.post<any, T>(`/v1/gateway/${name}`, range)
+  return gw.post<any, T>(`/api/v1/gateway/${name}`, range)
 }
 
 // ---------- 7 个接口 ----------
@@ -72,4 +72,4 @@ export const getOutputTrend = (r?: DateRange) => call<OutputTrendItem[]>('changa
 /** FTR 趋势 */
 export const getFtrTrend = (r?: DateRange) => call<FtrTrendItem[]>('changan_ftr_trend', r)
 /** JPH 加工节拍 —— 注意：入参为单日 p_jph_date，与其他接口的 DateRange 不同 */
-export const getJph = (p: JphParams) => gw.post<any, JphItem[]>('/v1/gateway/API_506252', p)
+export const getJph = (p: JphParams) => gw.post<any, JphItem[]>('/api/v1/gateway/API_506252', p)
