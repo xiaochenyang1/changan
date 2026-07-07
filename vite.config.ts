@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import { plugins } from './build/plugins'
@@ -7,10 +7,13 @@ import { getEnv } from './build/getEnv'
 
 export default defineConfig(({ mode }) => {
   const env = getEnv(mode)
+  // 读取 .env.[mode] 文件中的变量，用于构建期配置（如部署子路径）
+  const fileEnv = loadEnv(mode, process.cwd(), 'VITE_')
 
   return {
-    // 部署在 nginx 的 /dt-ui 子路径下，生产构建需带上该前缀；本地开发仍用根路径
-    base: mode === 'production' ? '/dt-ui/' : '/',
+    // 部署子路径由 .env 的 VITE_APP_BASE_URL 控制，未配置则默认根路径 '/'
+    // 生产若挂在 nginx 子路径下（如 /dt-ui/），在 .env.production 里填对应值即可
+    base: fileEnv.VITE_APP_BASE_URL || '/',
     plugins: plugins(),
     resolve: {
       alias: {

@@ -2,16 +2,16 @@ import axios from 'axios'
 
 /**
  * 长安永洪数据平台 —— 7 个指标接口
- * 走 vite 代理 /gw -> http://118.196.18.102:8080/api （绕开浏览器 CORS）
+ * 后端已放行跨域，前端直连网关（地址/鉴权由 .env 配置）
  * 每次请求自动带 X-AppKey / X-Timestamp(毫秒,5分钟有效) / X-Sign
  */
 
-const APPKEY = 'ak_changan'
-const SIGN = 'p0-dev' // 开发态固定签名，生产环境需替换为真实签名
+const APPKEY = import.meta.env.VITE_APP_GATEWAY_APPKEY
+const SIGN = import.meta.env.VITE_APP_GATEWAY_SIGN
 
 // 独立 axios 实例，避免影响现有 http(baseURL=/api) 的逻辑
 const gw = axios.create({
-  baseURL: '/gw',
+  baseURL: import.meta.env.VITE_APP_GATEWAY_URL,
   timeout: 30000,
   headers: { 'Content-Type': 'application/json' },
 })
