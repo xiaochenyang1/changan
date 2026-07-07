@@ -9,10 +9,12 @@
                 v-for="(kpi, i) in kpiList"
                 :key="i"
                 class="kpi-card flex-col"
+                :class="{ 'kpi-card--clickable': kpi.label === '制造周期' }"
                 :style="{
                   backgroundImage: `url(${kpi.bg})`,
                   marginLeft: kpi.gap ? `${kpi.gap}vw` : '',
                 }"
+                @click="onKpiClick(kpi)"
               >
                 <span class="kpi-card__label">{{ kpi.label }}</span>
                 <span class="kpi-card__value" :class="{ 'kpi-card__value--warn': kpi.warn }">{{
@@ -559,37 +561,59 @@
               />
             </div>
           </div>
-          <div class="group_27 flex-row">
-            <img
-              class="text_100"
-              referrerpolicy="no-referrer"
-              src="./assets/img/zaohuikanbanwenzi.png"
-            />
-            <div class="section_12 flex-col justify-between">
-              <span class="text_101">2026-06-12&nbsp;09:20:30</span>
-              <div class="image-wrapper_17 flex-col">
-                <img
-                  class="image_24"
-                  referrerpolicy="no-referrer"
-                  src="./assets/img/SketchPng6ef634c36496a5452031e9b8b9cf706c4561f8ce50f45461012f2e808ac925d2.png"
-                />
-              </div>
-            </div>
-            <div class="image-wrapper_18 flex-col align-center">
-              <img
-                class="image_25"
-                referrerpolicy="no-referrer"
-                src="./assets/img/SketchPng23afe756a718a100a7df5994f3ff3e053d228fbc3cd08ab7c996677b6ed9954c.png"
-              />
-            </div>
-          </div>
+          <DashboardHeader :title-img="titleImg" />
         </div>
       </div>
     </div>
+
+    <!-- 制造周期弹框 -->
+    <ZhizaozhouqiDialog :visible="showZhouqiDialog" @close="showZhouqiDialog = false" />
+
+    <!-- 千停弹框 -->
+    <QiantingDialog :visible="showQiantingDialog" @close="showQiantingDialog = false" />
+
+    <!-- 总装下线-外观下线弹框 -->
+    <ZongzhuangDialog :visible="showZongzhuangDialog" @close="showZongzhuangDialog = false" />
+
+    <!-- 产量计划完成率-数量弹框 -->
+    <ChanliangShuliangDialog :visible="showChanliangShuliangDialog" @close="showChanliangShuliangDialog = false" />
+
+    <!-- 产量计划完成率-时间弹框 -->
+    <ChanliangShijianDialog :visible="showChanliangShijianDialog" @close="showChanliangShijianDialog = false" />
   </div>
 </template>
 <script setup lang="ts">
 // Page component
+import { ref } from 'vue'
+import DashboardHeader from '@/components/DashboardHeader'
+import ZhizaozhouqiDialog from '../lanhu_zhizaozhouqi/index.vue'
+import QiantingDialog from '../lanhu_qiantingshuju/index.vue'
+import ZongzhuangDialog from '../lanhu_zongzhuangxiaxianwaiguanxiaxian/index.vue'
+import ChanliangShuliangDialog from '../lanhu_chanliangjihuawanchenglvshuliang/index.vue'
+import ChanliangShijianDialog from '../lanhu_chanliangjihuawanchenglvshijian/index.vue'
+import titleImg from './assets/img/zaohuikanbanwenzi.png'
+
+// 各弹框显示状态
+const showZhouqiDialog = ref(false)
+const showQiantingDialog = ref(false)
+const showZongzhuangDialog = ref(false)
+const showChanliangShuliangDialog = ref(false)
+const showChanliangShijianDialog = ref(false)
+
+// 点击顶部 KPI 卡片：根据 label 弹出对应弹框
+function onKpiClick(kpi: { label: string }) {
+  if (kpi.label === '制造周期') {
+    showZhouqiDialog.value = true
+  } else if (kpi.label === '千停') {
+    showQiantingDialog.value = true
+  } else if (kpi.label === '总装下线-外观下线') {
+    showZongzhuangDialog.value = true
+  } else if (kpi.label === '产量计划完成率-数量') {
+    showChanliangShuliangDialog.value = true
+  } else if (kpi.label === '产量计划完成率-时间') {
+    showChanliangShijianDialog.value = true
+  }
+}
 
 // 顶部 KPI 条背景切图（每张卡片各一张）
 import bgZhouqi from './assets/img/zhizaozhouqi.png'

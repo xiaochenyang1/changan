@@ -1,31 +1,10 @@
 <template>
-  <div class="page flex-col">
-    
-    <div class="section_1 flex-col">
-      <div class="block_1 flex-row">
-        <span class="text_1">龙兴工厂早会看板</span>
-        <div class="box_1 flex-col justify-between">
-          <span class="text_2">2026-03-17&nbsp;08:20:30</span>
-          <img
-            class="image_1"
-            referrerpolicy="no-referrer"
-            src="./assets/img/SketchPng25d57ec753a8bffcd1b85b54e51ddf4fa23c4cf1047441573c2ab1ce93ada3f3.png"
-          />
-        </div>
-        <div class="image-wrapper_1 flex-col align-center">
-          <img
-            class="image_2"
-            referrerpolicy="no-referrer"
-            src="./assets/img/SketchPng23afe756a718a100a7df5994f3ff3e053d228fbc3cd08ab7c996677b6ed9954c.png"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="section_2 flex-col">
+  <Teleport to="body">
+    <div v-if="visible" class="zhouqi-mask" @click.self="emit('close')">
       <div class="box_2 flex-col">
         <div class="section_3 flex-row justify-between">
           <span class="text_3">制造周期</span>
-          <div class="image-wrapper_2 flex-col">
+          <div class="image-wrapper_2 flex-col dialog-close" @click="emit('close')">
             <img
               class="thumbnail_1"
               referrerpolicy="no-referrer"
@@ -190,190 +169,64 @@
                 <br />
               </span>
             </div>
-            <div class="section_7 flex-row justify-between">
-              <img
-                class="image_18"
-                referrerpolicy="no-referrer"
-                src="./assets/img/SketchPngbdc3705c69a7d4dcc45cf97417ce22b30ccda72b5168416cc8f87870e0d77cf0.png"
-              />
-              <div class="group_1 flex-col">
-                <div class="group_2 flex-row">
-                  <span class="text_32">物料种类</span>
-                  <span class="text_33">数量</span>
-                  <span class="text_34">平均超时时长</span>
-                  <img
-                    class="image_19"
-                    referrerpolicy="no-referrer"
-                    src="./assets/img/SketchPngbdc3705c69a7d4dcc45cf97417ce22b30ccda72b5168416cc8f87870e0d77cf0.png"
-                  />
-                  <img
-                    class="image_20"
-                    referrerpolicy="no-referrer"
-                    src="./assets/img/SketchPng4817c4be228fc7bc18ede833d7238d7920bb1d1d3d2670dd8013f56de51a9992.png"
-                  />
-                  <img
-                    class="image_21"
-                    referrerpolicy="no-referrer"
-                    src="./assets/img/SketchPng64b3147c45f4837fc2c2cd6b197350d24fe646de398b381b30369ab685d5fb87.png"
-                  />
-                </div>
-                <div class="text-wrapper_5 flex-row">
-                  <span class="text_35">焊接车间</span>
-                  <span class="text_36">5</span>
-                  <span class="text_37">9.5</span>
-                </div>
-                <div class="text-wrapper_6 flex-row">
-                  <span class="text_38">立库焊后</span>
-                  <span class="text_39">603</span>
-                  <span class="text_40">0.5</span>
-                </div>
-                <div class="text-wrapper_7 flex-row">
-                  <span class="text_41">涂装车间</span>
-                  <span class="text_42">102</span>
-                  <span class="text_43">4.7</span>
-                </div>
-                <div class="text-wrapper_8 flex-row">
-                  <span class="text_44">立库涂后</span>
-                  <span class="text_45">92</span>
-                  <span class="text_46">4.4</span>
-                </div>
-                <div class="text-wrapper_9 flex-row">
-                  <span class="text_47">总装车间</span>
-                  <span class="text_48">120</span>
-                  <span class="text_49">0.1</span>
-                </div>
-                <div class="text-wrapper_10 flex-row">
-                  <span class="text_50">后端交付</span>
-                  <span class="text_51">429</span>
-                  <span class="text_52">3.9</span>
-                </div>
+            <div class="dtd-table">
+              <div class="dtd-table__header">
+                <div class="dtd-table__cell dtd-table__cell--header">物料种类</div>
+                <div class="dtd-table__cell dtd-table__cell--header">数量</div>
+                <div class="dtd-table__cell dtd-table__cell--header">平均超时时长</div>
+              </div>
+              <div v-for="(row, i) in dtdData" :key="i" class="dtd-table__row">
+                <div class="dtd-table__cell">{{ row.name }}</div>
+                <div class="dtd-table__cell dtd-table__cell--center">{{ row.count }}</div>
+                <div class="dtd-table__cell dtd-table__cell--center">{{ row.avgTime }}</div>
               </div>
             </div>
-            <img
-              class="image_22"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPng442d6619136ba565ad6a953cc6bc444b69a00b0f7d6a8ac2d52c6bfb1631fc0d.png"
-            />
-            <img
-              class="image_23"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPng442d6619136ba565ad6a953cc6bc444b69a00b0f7d6a8ac2d52c6bfb1631fc0d.png"
-            />
-            <img
-              class="image_24"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngcfa5e1ed9051a4733a3b8fd158c311634ae27a88b04f80b9bbceaafb5b01958b.png"
-            />
-            <img
-              class="image_25"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngcfa5e1ed9051a4733a3b8fd158c311634ae27a88b04f80b9bbceaafb5b01958b.png"
-            />
-            <img
-              class="image_26"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngcfa5e1ed9051a4733a3b8fd158c311634ae27a88b04f80b9bbceaafb5b01958b.png"
-            />
-            <img
-              class="image_27"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngcfa5e1ed9051a4733a3b8fd158c311634ae27a88b04f80b9bbceaafb5b01958b.png"
-            />
-            <img
-              class="image_28"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngcfa5e1ed9051a4733a3b8fd158c311634ae27a88b04f80b9bbceaafb5b01958b.png"
-            />
-            <img
-              class="image_29"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngcfa5e1ed9051a4733a3b8fd158c311634ae27a88b04f80b9bbceaafb5b01958b.png"
-            />
           </div>
           <div class="box_9 flex-col">
             <span class="paragraph_3">
               各区域在线车
               <br />
             </span>
-            <img
-              class="image_30"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngbdc3705c69a7d4dcc45cf97417ce22b30ccda72b5168416cc8f87870e0d77cf0.png"
-            />
-            <div class="group_3 flex-row">
-              <span class="text_53">区域</span>
-              <span class="text_54">在线车数量</span>
-              <img
-                class="image_31"
-                referrerpolicy="no-referrer"
-                src="./assets/img/SketchPngbdc3705c69a7d4dcc45cf97417ce22b30ccda72b5168416cc8f87870e0d77cf0.png"
-              />
-              <img
-                class="image_32"
-                referrerpolicy="no-referrer"
-                src="./assets/img/SketchPng64b3147c45f4837fc2c2cd6b197350d24fe646de398b381b30369ab685d5fb87.png"
-              />
+            <div class="dtd-table">
+              <div class="dtd-table__header">
+                <div class="dtd-table__cell dtd-table__cell--header">区域</div>
+                <div class="dtd-table__cell dtd-table__cell--header">在线车数量</div>
+              </div>
+              <div v-for="(row, i) in zoneData" :key="i" class="dtd-table__row">
+                <div class="dtd-table__cell">{{ row.name }}</div>
+                <div class="dtd-table__cell dtd-table__cell--center">{{ row.count }}</div>
+              </div>
             </div>
-            <span class="text_55">133</span>
-            <span class="text_56">焊接车间</span>
-            <img
-              class="image_33"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngcfa5e1ed9051a4733a3b8fd158c311634ae27a88b04f80b9bbceaafb5b01958b.png"
-            />
-            <span class="text_57">白车身立库</span>
-            <span class="text_58">23</span>
-            <img
-              class="image_34"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngcfa5e1ed9051a4733a3b8fd158c311634ae27a88b04f80b9bbceaafb5b01958b.png"
-            />
-            <span class="text_59">涂装车间</span>
-            <span class="text_60">524</span>
-            <img
-              class="image_35"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngcfa5e1ed9051a4733a3b8fd158c311634ae27a88b04f80b9bbceaafb5b01958b.png"
-            />
-            <span class="text_61">彩车身立库</span>
-            <span class="text_62">17</span>
-            <img
-              class="image_36"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngcfa5e1ed9051a4733a3b8fd158c311634ae27a88b04f80b9bbceaafb5b01958b.png"
-            />
-            <span class="text_63">总装车间</span>
-            <span class="text_64">338</span>
-            <img
-              class="image_37"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngcfa5e1ed9051a4733a3b8fd158c311634ae27a88b04f80b9bbceaafb5b01958b.png"
-            />
-            <span class="text_65">总装下线-入库</span>
-            <span class="text_66">277</span>
-            <img
-              class="image_38"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPng442d6619136ba565ad6a953cc6bc444b69a00b0f7d6a8ac2d52c6bfb1631fc0d.png"
-            />
-            <img
-              class="image_39"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPng442d6619136ba565ad6a953cc6bc444b69a00b0f7d6a8ac2d52c6bfb1631fc0d.png"
-            />
-            <img
-              class="image_40"
-              referrerpolicy="no-referrer"
-              src="./assets/img/SketchPngcfa5e1ed9051a4733a3b8fd158c311634ae27a88b04f80b9bbceaafb5b01958b.png"
-            />
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </Teleport>
 </template>
 <script setup lang="ts">
-// Page component
+// 制造周期弹框组件。由父级看板通过 visible 控制显示，关闭时 emit('close')。
+defineProps<{ visible: boolean }>()
+const emit = defineEmits<{ (e: 'close'): void }>()
+
+// DTD 超时车辆表格数据。后续接真实接口时替换为请求返回值。
+const dtdData = [
+  { name: '焊接车间', count: 5, avgTime: 9.5 },
+  { name: '立库焊后', count: 603, avgTime: 0.5 },
+  { name: '涂装车间', count: 102, avgTime: 4.7 },
+  { name: '立库涂后', count: 92, avgTime: 4.4 },
+  { name: '总装车间', count: 120, avgTime: 0.1 },
+  { name: '后端交付', count: 429, avgTime: 3.9 },
+]
+
+// 各区域在线车表格数据。后续接真实接口时替换为请求返回值。
+const zoneData = [
+  { name: '焊接车间', count: 133 },
+  { name: '白车身立库', count: 23 },
+  { name: '涂装车间', count: 524 },
+  { name: '彩车身立库', count: 17 },
+  { name: '总装车间', count: 338 },
+  { name: '总装下线-入库', count: 277 },
+]
 </script>
 
 

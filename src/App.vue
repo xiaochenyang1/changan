@@ -11,20 +11,22 @@ import { messenger } from '@/composables/messenger'
 
 const router = useRouter()
 
-// 后端「切换看板」通知 → 路由跳转；data 为看板名称字符串，映射到对应路由
+// 父页面「切换看板」通知 → 路由跳转；data 为看板名称字符串，映射到对应路由
 const DASHBOARD_ROUTES: Record<string, string> = {
   龙兴工厂: '/lanhu_longxinggongchangzaohuikanban',
   电池中心: '/lanhu_changandianchichejian',
+  产线: '/lanhu_chanxiankanban',
 }
 
-// 注意：SWITCH_DASHBOARD 不带 Cosmo_ 前缀，具名 subscribe 收不到，
-// 必须用 '*' 通配订阅再按 type 过滤（详见 iframeMessage.ts）
+// 父页面下发的「切换看板」通知：{ type: 'Cosmo_SWITCH_DASHBOARD', data: '电池中心' }
+// 业务消息带 Cosmo_ 前缀，用 '*' 通配订阅再按完整 type 过滤（详见 iframeMessage.ts）
+const SWITCH_DASHBOARD_TYPE = 'Cosmo_SWITCH_DASHBOARD'
 let offSwitch: (() => void) | null = null
 
 onMounted(() => {
   messenger.init()
   offSwitch = messenger.subscribe('*', (msg) => {
-    if (msg.type !== 'SWITCH_DASHBOARD') return
+    if (msg.type !== SWITCH_DASHBOARD_TYPE) return
     const target = DASHBOARD_ROUTES[String(msg.data)]
     if (target && router.currentRoute.value.path !== target) {
       router.push(target)
