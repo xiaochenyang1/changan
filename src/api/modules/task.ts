@@ -1,12 +1,21 @@
-import http from '../index'
+import axios from 'axios'
 
 /**
  * 车间任务系统接口（移植自 workshop-task-web）
- * 复用大屏公共 http 实例（baseURL=/api），开发环境经 vite 代理转发到任务后端。
- * 写法与 dashboard.ts 保持一致：export const + 箭头函数 + http.xxx()。
- * 注意：公共 http 响应拦截只解到后端信封 { code, message, data }（不判 code），
- * 故各方法返回 ApiResult<T>，调用处需自行判断 code === 0（见 CreateTaskModal.submit）。
+ * 直连任务后端（地址由 .env 的 VITE_APP_TASK_URL 配置），写法参照 changan.ts 的独立实例。
+ * ⚠️ 直连是浏览器跨域请求，必须后端放行 CORS，否则会被浏览器拦截（当前预检 OPTIONS 返回 403）。
+ * 响应拦截只解到后端信封 { code, message, data }（不判 code），调用处自行判断 code === 0。
  */
+
+// 独立 axios 实例，避免影响公共 http(baseURL=/api) 与 dashboard.ts
+const task = axios.create({
+  baseURL: import.meta.env.VITE_APP_TASK_URL, // 如 http://118.196.18.102:8082/api
+  timeout: 30000,
+  headers: { 'Content-Type': 'application/json' },
+})
+
+// 只解到后端信封，交给调用处判 code（与公共 http 行为保持一致）
+task.interceptors.response.use((resp) => resp.data)
 
 /** 后端统一响应结构 */
 export interface ApiResult<T = unknown> {
@@ -33,5 +42,5 @@ export interface Task {
 
 // 创建任务
 export const createTask = (data: Partial<Task>) => {
-  return http.post<ApiResult<Task>>('/tasks', data)
+  return task.post<any, ApiResult<Task>>('/tasks', data)
 }
