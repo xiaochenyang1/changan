@@ -331,8 +331,13 @@
             </div>
             <div class="text-wrapper_25 flex-col">
               <img class="text_113" src="./assets/img/shebeinengxiao.png" />
-              <!-- 创建维修任务入口按钮 -->
-              <button class="mt-entry-btn" @click="modalVisible = true">+ 任务下发</button>
+              <!-- 入口按钮组：任务下发 + 新增任务 -->
+              <div class="mt-entry-group flex-row">
+                <button class="mt-entry-btn" @click="modalVisible = true">+ 任务下发</button>
+                <button class="mt-entry-btn mt-entry-btn--create" @click="createTaskVisible = true">
+                  + 新增任务
+                </button>
+              </div>
             </div>
             <div class="text-wrapper_26 flex-col">
               <img class="text_114" src="./assets/img/yijizhibiaoxiangqing.png" />
@@ -350,6 +355,8 @@
     </div>
     <!-- 创建维修任务弹框 -->
     <MaintenanceTaskModal v-if="modalVisible" v-model:visible="modalVisible" />
+    <!-- 新增任务弹框（复用车间任务系统的创建接口）-->
+    <CreateTaskModal v-if="createTaskVisible" v-model:visible="createTaskVisible" />
   </div>
 </template>
 
@@ -382,6 +389,9 @@ const MaintenanceTaskModal = defineAsyncComponent(
   () => import('./components/MaintenanceTaskModal.vue')
 )
 
+// 新增任务弹框（复用车间任务系统创建接口）
+const CreateTaskModal = defineAsyncComponent(() => import('./components/CreateTaskModal.vue'))
+
 // 点击「设备千台停机率」→ 通知 3D 场景聚焦对应设备
 function handleDowntimeRateClick() {
   triggerLowCode('focus-device', '电芯拆垛上料')
@@ -389,6 +399,9 @@ function handleDowntimeRateClick() {
 
 // 创建维修任务弹框开关
 const modalVisible = ref(false)
+
+// 新增任务弹框开关
+const createTaskVisible = ref(false)
 
 // 长安指标数据
 const ftrText = ref('--') // FTR 一次性通过率（changan_ftr，ftt×100%）

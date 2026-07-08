@@ -1667,11 +1667,16 @@
             left: 73.958vw;
             top: 2.037vh;
             // 维修任务入口按钮（标题栏本身已是 absolute，作为定位上下文）
-            .mt-entry-btn {
+            .mt-entry-group {
               position: absolute;
               right: 1.25vw;
               top: 38%;
               transform: translateY(-50%);
+              display: flex;
+              align-items: center;
+              gap: 0.625vw;
+            }
+            .mt-entry-btn {
               height: 2.685vh;
               padding: 0 0.833vw;
               color: rgba(150, 230, 255, 1);
@@ -1686,6 +1691,17 @@
                 color: #fff;
                 border-color: rgba(120, 230, 255, 1);
                 box-shadow: 0 0 0.6vw rgba(64, 200, 255, 0.7);
+              }
+              // 新增任务按钮：绿色系区分「任务下发」
+              &--create {
+                color: rgba(140, 255, 200, 1);
+                background-color: rgba(20, 90, 70, 0.45);
+                border-color: rgba(64, 220, 160, 0.7);
+                &:hover {
+                  color: #fff;
+                  border-color: rgba(120, 255, 200, 1);
+                  box-shadow: 0 0 0.6vw rgba(64, 220, 160, 0.7);
+                }
               }
             }
             .text_113 {
