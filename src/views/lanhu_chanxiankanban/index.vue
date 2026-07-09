@@ -518,7 +518,7 @@
             </div>
           </div>
           <div class="text-wrapper_26 flex-col">
-            <img class="text_107" referrerpolicy="no-referrer" src="./assets/img/gph.png" />
+            <img class="text_107" referrerpolicy="no-referrer" src="./assets/img/jph.png" />
           </div>
           <div class="text-wrapper_27 flex-col">
             <img
