@@ -40,13 +40,13 @@
                 </div>
                 <div class="section_7 flex-col justify-end">
                   <div class="section_23 flex-row">
-                    <div ref="ftrRingRef" class="ftr-ring"></div>
-                    <div class="text-wrapper_44 flex-col justify-between">
+                    <div ref="ftrRingRef" class="ftr-ring" style="cursor: pointer" @click="handleMetricClick('FTR')"></div>
+                    <div class="text-wrapper_44 flex-col justify-between" style="cursor: pointer" @click="handleMetricClick('FTR')">
                       <span class="text_7">FTR</span>
                       <span class="text_8">{{ ftrText }}</span>
                     </div>
-                    <div ref="c1000RingRef" class="c1000-ring"></div>
-                    <div class="text-wrapper_45 flex-col justify-between">
+                    <div ref="c1000RingRef" class="c1000-ring" style="cursor: pointer" @click="handleMetricClick('C1000')"></div>
+                    <div class="text-wrapper_45 flex-col justify-between" style="cursor: pointer" @click="handleMetricClick('C1000')">
                       <span class="text_9">C/1000</span>
                       <span class="text_10">{{ c1000Text }}</span>
                     </div>
@@ -87,7 +87,7 @@
                 <div class="box_7 flex-col justify-end">
                   <div class="box_29 flex-row">
                     <img class="image-wrapper_6 flex-col" src="./assets/img/chanliang.png" alt="" />
-                    <div class="text-group_32 flex-col justify-between">
+                    <div class="text-group_32 flex-col justify-between" style="cursor: pointer" @click="handleMetricClick('CL')">
                       <span class="text_33">产量</span>
                       <span class="text_34">{{ outputText }}</span>
                     </div>
@@ -98,7 +98,7 @@
                         src="./assets/img/tingxianshichangcion.png"
                         alt=""
                       />
-                      <div class="text-group_33 flex-col justify-between">
+                      <div class="text-group_33 flex-col justify-between" style="cursor: pointer" @click="handleMetricClick('TXSC')">
                         <span class="text_36">停线时长（min）</span>
                         <span class="text_37">{{ downtimeText }}</span>
                       </div>
@@ -106,7 +106,7 @@
                   </div>
                   <div class="box_30 flex-row">
                     <img class="image-wrapper_12 flex-col" src="./assets/img/jph.png" alt="" />
-                    <div class="text-group_34 flex-col justify-between">
+                    <div class="text-group_34 flex-col justify-between" style="cursor: pointer" @click="handleMetricClick('JPH')">
                       <span class="text_120">JPH</span>
                       <span class="text_121">{{ jphText }}</span>
                     </div>
@@ -195,7 +195,7 @@
                     <div
                       class="box_4 flex-col"
                       style="cursor: pointer"
-                      @click="handleDowntimeRateClick"
+                      @click="handleMetricClick('SBQTTJL')"
                     >
                       <span class="text_25">10</span>
                       <span class="text_26">设备千台停机率</span>
@@ -392,9 +392,10 @@ const MaintenanceTaskModal = defineAsyncComponent(
 // 新增任务弹框（复用车间任务系统创建接口）
 const CreateTaskModal = defineAsyncComponent(() => import('./components/CreateTaskModal.vue'))
 
-// 点击「设备千台停机率」→ 通知 3D 场景聚焦对应设备
-function handleDowntimeRateClick() {
-  triggerLowCode('focus-device', '电芯拆垛上料')
+// 点击指标卡片 → 只向 3D 场景发一条消息(不做其他操作)
+// 固定 eventName 'click-event',eventData 为该指标缩写(如 FTR / C1000 / CL / TXSC / JPH …)
+function handleMetricClick(metric: string) {
+  triggerLowCode('click-event', metric)
 }
 
 // 创建维修任务弹框开关
