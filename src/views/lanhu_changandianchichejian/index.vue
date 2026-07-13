@@ -375,6 +375,7 @@ import {
   getDowntime,
   getFtrTrend,
   getJph,
+  dateStr,
 } from '@/api/modules/changan'
 import type { OutputTrendItem, FtrTrendItem } from '@/api/modules/changan'
 import { triggerLowCode } from '@/composables/messenger'
@@ -688,7 +689,7 @@ async function loadMetrics() {
       errorMessage: '停机统计加载失败',
       run: async () => {
         // 停线时长（各天 total_duration 求和）
-        const res = await getDowntime({ stat_date: '2026-05-01', end_date: '2026-06-30' })
+        const res = await getDowntime({ stat_date: dateStr(-1), end_date: dateStr(0) })
         if (isUnmounted) return
         const sum = res.reduce((acc, d) => acc + (d.total_duration ?? 0), 0)
         downtimeText.value = String(Math.round(sum))
@@ -697,8 +698,8 @@ async function loadMetrics() {
     {
       errorMessage: 'JPH 加载失败',
       run: async () => {
-        // JPH 加工节拍（按单日查询，固定取 2026-06-12 —— 该日有数据）
-        const res = await getJph({ p_jph_date: '2026-06-12' })
+        // JPH 加工节拍（按单日查询，取今天）
+        const res = await getJph({ p_jph_date: dateStr(0) })
         if (isUnmounted) return
         const jph = res[0]?.total_jph
         if (jph != null) jphText.value = jph.toFixed(2)

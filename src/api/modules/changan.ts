@@ -50,8 +50,18 @@ export interface JphItem { total_jph: number }
 // JPH 接口入参与其他接口不同：按单日查询（p_jph_date），psize/offset 可选
 export interface JphParams { p_jph_date: string; psize?: number; offset?: number }
 
-// 默认查询区间（按需在调用处覆盖）
-const defaultRange: DateRange = { stat_date: '2026-01-01', end_date: '2026-06-30' }
+// 日期助手：返回相对今天 offsetDays 天的 'YYYY-MM-DD'（0=今天，-1=昨天）
+export function dateStr(offsetDays = 0): string {
+  const d = new Date()
+  d.setDate(d.getDate() + offsetDays)
+  const y = d.getFullYear()
+  const m = String(d.getMonth() + 1).padStart(2, '0')
+  const day = String(d.getDate()).padStart(2, '0')
+  return `${y}-${m}-${day}`
+}
+
+// 默认查询区间：开始=昨天，结束=今天（按需在调用处覆盖）
+const defaultRange: DateRange = { stat_date: dateStr(-1), end_date: dateStr(0) }
 
 function call<T>(name: string, range: DateRange = defaultRange): Promise<T> {
   // 响应拦截已返回 data，故第二个泛型即最终返回类型
