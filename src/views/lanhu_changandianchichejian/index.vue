@@ -117,9 +117,9 @@
                         src="./assets/img/jihuadachengzhunshilv.png"
                         alt=""
                       />
-                      <div class="text-group_35 flex-col justify-between">
-                        <span class="text_123">计划达成准时率</span>
-                        <span class="text_124">96.2%</span>
+                      <div class="text-group_35 flex-col justify-between" style="cursor: pointer" @click="handleMetricClick('QTJTXSJ')">
+                        <span class="text_123">千台机停线时间(min)</span>
+                        <span class="text_124">{{ ktjTxsjText }}</span>
                       </div>
                     </div>
                   </div>
@@ -375,6 +375,7 @@ import {
   getDowntime,
   getFtrTrend,
   getJph,
+  getKtjTxsj,
   dateStr,
 } from '@/api/modules/changan'
 import type { OutputTrendItem, FtrTrendItem } from '@/api/modules/changan'
@@ -411,6 +412,7 @@ const outputText = ref('--') // 产量汇总（changan_output，total_output）
 const c1000Text = ref('--') // C1000 缺陷率（changan_c1000，每千台缺陷数，非百分比）
 const downtimeText = ref('--') // 停线时长合计（changan_downtime，各天 total_duration 求和，单位 min）
 const jphText = ref('--') // JPH 加工节拍（API_506252，total_jph）
+const ktjTxsjText = ref('--') // 千台机停线时间（API_237009，total_duration 求和，单位 min）
 
 // 产量趋势图（changan_output_trend）
 const outputTrendRef = ref<HTMLElement | null>(null)
@@ -680,7 +682,7 @@ async function loadMetrics() {
         if (isUnmounted) return
         const v = res[0]?.c1000
         if (v != null) {
-          c1000Text.value = v.toFixed(2)
+          c1000Text.value = String(Math.round(v))
           renderC1000Ring(75)
         }
       },
@@ -703,6 +705,16 @@ async function loadMetrics() {
         if (isUnmounted) return
         const jph = res[0]?.total_jph
         if (jph != null) jphText.value = jph.toFixed(2)
+      },
+    },
+    {
+      errorMessage: '千台机停线时间加载失败',
+      run: async () => {
+        // 千台机停线时间（各天 total_duration 求和，单位 min）
+        const res = await getKtjTxsj({ stat_date: dateStr(-1), end_date: dateStr(0) })
+        if (isUnmounted) return
+        const sum = res.reduce((acc, d) => acc + (d.total_duration ?? 0), 0)
+        ktjTxsjText.value = String(Math.round(sum))
       },
     },
   ]

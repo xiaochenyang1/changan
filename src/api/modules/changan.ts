@@ -46,6 +46,8 @@ export interface DowntimeItem { belong_date: string; total_duration?: number }
 export interface OutputTrendItem { OPERATION_DT: string; total_output: number }
 export interface FtrTrendItem { OPERATION_DT: string; ftt?: number }
 export interface JphItem { total_jph: number }
+// 千台机停线时间（API_237009，DateRange 入参）。字段名按停机类接口惯例取 total_duration，如后端字段不同需同步调整
+export interface KtjTxsjItem { total_duration?: number }
 
 // JPH 接口入参与其他接口不同：按单日查询（p_jph_date），psize/offset 可选
 export interface JphParams { p_jph_date: string; psize?: number; offset?: number }
@@ -83,3 +85,7 @@ export const getOutputTrend = (r?: DateRange) => call<OutputTrendItem[]>('changa
 export const getFtrTrend = (r?: DateRange) => call<FtrTrendItem[]>('changan_ftr_trend', r)
 /** JPH 加工节拍 —— 注意：入参为单日 p_jph_date，与其他接口的 DateRange 不同 */
 export const getJph = (p: JphParams) => gw.post<any, JphItem[]>('/api/v1/gateway/API_506252', p)
+
+/** 千台机停线时间（min）—— DateRange 入参，额外固定带 psize/offset 分页参数 */
+export const getKtjTxsj = (r: DateRange = defaultRange) =>
+  gw.post<any, KtjTxsjItem[]>('/api/v1/gateway/API_237009', { ...r, psize: 10, offset: 0 })
