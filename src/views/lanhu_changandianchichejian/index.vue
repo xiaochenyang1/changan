@@ -698,8 +698,8 @@ async function loadMetrics() {
     {
       errorMessage: 'JPH 加载失败',
       run: async () => {
-        // JPH 加工节拍（按单日查询，取今天）
-        const res = await getJph({ p_jph_date: dateStr(0) })
+        // JPH 加工节拍（按单日查询，取昨天）
+        const res = await getJph({ p_jph_date: dateStr(-1) })
         if (isUnmounted) return
         const jph = res[0]?.total_jph
         if (jph != null) jphText.value = jph.toFixed(2)
