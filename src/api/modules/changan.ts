@@ -86,6 +86,6 @@ export const getFtrTrend = (r?: DateRange) => call<FtrTrendItem[]>('changan_ftr_
 /** JPH 加工节拍 —— 注意：入参为单日 p_jph_date，与其他接口的 DateRange 不同 */
 export const getJph = (p: JphParams) => gw.post<any, JphItem[]>('/api/v1/gateway/API_506252', p)
 
-/** 千台机停线时间（min）—— DateRange 入参，额外固定带 psize/offset 分页参数 */
+/** 千台机停线时间（min）—— DateRange 入参 */
 export const getKtjTxsj = (r: DateRange = defaultRange) =>
-  gw.post<any, KtjTxsjItem[]>('/api/v1/gateway/API_237009', { ...r, psize: 10, offset: 0 })
+  gw.post<any, KtjTxsjItem[]>('/api/v1/gateway/API_237009', r)
