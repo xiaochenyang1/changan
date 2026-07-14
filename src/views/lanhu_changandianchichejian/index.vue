@@ -691,7 +691,7 @@ async function loadMetrics() {
       errorMessage: '停机统计加载失败',
       run: async () => {
         // 停线时长（各天 total_duration 求和）
-        const res = await getDowntime({ stat_date: dateStr(-1), end_date: dateStr(0) })
+        const res = await getDowntime({ stat_date: dateStr(0), end_date: dateStr(0) })
         if (isUnmounted) return
         const sum = res.reduce((acc, d) => acc + (d.total_duration ?? 0), 0)
         downtimeText.value = String(Math.round(sum))
@@ -711,7 +711,7 @@ async function loadMetrics() {
       errorMessage: '千台机停线时间加载失败',
       run: async () => {
         // 千台机停线时间（各天 total_duration 求和，单位 min）
-        const res = await getKtjTxsj({ stat_date: dateStr(-1), end_date: dateStr(0) })
+        const res = await getKtjTxsj({ stat_date: dateStr(0), end_date: dateStr(0) })
         if (isUnmounted) return
         const sum = res.reduce((acc, d) => acc + (d.total_duration ?? 0), 0)
         ktjTxsjText.value = String(Math.round(sum))
@@ -733,7 +733,7 @@ async function loadCharts() {
       errorMessage: '产量趋势加载失败',
       run: async () => {
         // 产量趋势图
-        const trend = await getOutputTrend()
+        const trend = await getOutputTrend({ stat_date: dateStr(-6), end_date: dateStr(0) })
         if (isUnmounted) return
         renderOutputTrend(trend)
       },
@@ -742,7 +742,7 @@ async function loadCharts() {
       errorMessage: 'FTR趋势加载失败',
       run: async () => {
         // FTR 趋势图
-        const trend = await getFtrTrend()
+        const trend = await getFtrTrend({ stat_date: dateStr(-6), end_date: dateStr(0) })
         if (isUnmounted) return
         renderFtrTrend(trend)
       },

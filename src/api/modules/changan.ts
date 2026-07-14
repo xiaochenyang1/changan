@@ -62,8 +62,8 @@ export function dateStr(offsetDays = 0): string {
   return `${y}-${m}-${day}`
 }
 
-// 默认查询区间：开始=昨天，结束=今天（按需在调用处覆盖）
-const defaultRange: DateRange = { stat_date: dateStr(-1), end_date: dateStr(0) }
+// 默认查询区间：开始=结束=今天（按需在调用处覆盖）
+const defaultRange: DateRange = { stat_date: dateStr(0), end_date: dateStr(0) }
 
 function call<T>(name: string, range: DateRange = defaultRange): Promise<T> {
   // 响应拦截已返回 data，故第二个泛型即最终返回类型
