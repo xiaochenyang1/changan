@@ -334,9 +334,10 @@
               <!-- 入口按钮组：任务下发 + 新增任务 -->
               <div class="mt-entry-group flex-row">
                 <button class="mt-entry-btn" @click="modalVisible = true">+ 任务下发</button>
-                <button class="mt-entry-btn mt-entry-btn--create" @click="createTaskVisible = true">
+                <!-- 新增任务按钮暂时注释，后续需要时放开即可（CreateTaskModal 相关逻辑已保留） -->
+                <!-- <button class="mt-entry-btn mt-entry-btn--create" @click="createTaskVisible = true">
                   + 新增任务
-                </button>
+                </button> -->
               </div>
             </div>
             <div class="text-wrapper_26 flex-col">
@@ -432,6 +433,10 @@ let c1000RingChart: EChartsInstance | null = null
 const attendanceRingRef = ref<HTMLElement | null>(null)
 let attendanceRingChart: EChartsInstance | null = null
 let isUnmounted = false
+
+// 大屏数据自动刷新定时器（每 5 分钟重新拉取一次全部真实接口）
+const REFRESH_INTERVAL = 5 * 60 * 1000
+let refreshTimer: ReturnType<typeof setInterval> | undefined
 
 type RingChartOptions = {
   el: HTMLElement | null
@@ -762,10 +767,16 @@ onMounted(() => {
   isUnmounted = false
   window.addEventListener('resize', handleResize)
   loadDashboardData()
+  // 每 5 分钟自动拉取一次全部指标与趋势数据（日期在每次调用时实时计算，跨天自动更新）
+  refreshTimer = setInterval(loadDashboardData, REFRESH_INTERVAL)
 })
 
 onBeforeUnmount(() => {
   isUnmounted = true
+  if (refreshTimer) {
+    clearInterval(refreshTimer)
+    refreshTimer = undefined
+  }
   window.removeEventListener('resize', handleResize)
   disposeChart(outputTrendChart)
   disposeChart(ftrTrendChart)
